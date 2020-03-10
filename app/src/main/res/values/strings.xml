@@ -1,0 +1,276 @@
+<resources>
+    <string name="app_name">Thomasian Journey Mobile App</string>
+    <string name="tab_text_1">EVENTS</string>
+    <string name="tab_text_2">UPCOMING</string>
+    <string name="tab_text_3">ATTENDED</string>
+
+    <string name="registeraccount">
+        <li>In registering for your account, you must enter your ust.edu.ph email account and mobile number (login credentials). After entering your login credentials, press the Register button.\n</li>
+        <li>You will then be redirected on the verification page, where you must enter the verification sent to you in your ust.edu.ph email account then, press the Verify button.\n</li>
+        <li>If you haven’t received your verification code in your email, press the “Didn’t get an email?” link to have another verification code.\n</li>
+        <li>After successfully verifying your account, press Continue.</li>
+    </string>
+
+    <string name="view_events">
+        <li>In the home page, press the View Events button.\n</li>
+        <li>The view events page consists of (3) three tabs namely, Events, Upcoming, and Attended.\n</li>
+        <p>i. For the events tab, it will show you both the upcoming and attended events.\n</p>
+        <p>ii. For the upcoming tab, it will show you only the upcoming events that you may participate in to.\n</p>
+        <p>iii. For the attended tab, it will show you the past events that you’ve attended so far.\n</p>
+        <li>In viewing the event details, press the specific event you want to know more.\n</li>
+        <li>It will show you the title of the event, date and time, venue, description of the event and the point you will receive.</li>
+    </string>
+
+    <string name="view_portfolio">
+        <li>In the home page, press the View Portfolio button.\n</li>
+        <li>You will be redirected to the View Portfolio page where you can see the events you’ve attended, sorted by your year level.</li>
+    </string>
+
+    <string name="view_scanqr">
+        <li>Press the View Events button in the home page.\n</li>
+        <li>Press the event you wanted to attend to.\n</li>
+        <li>In the event details page, press the Attend Event button.\n</li>
+        <li>Wait for your login credentials to be verified.\n</li>
+        <li>Once verified, you can already scan the QR code.\n</li>
+        <li>Point your smartphone’s camera directly to the QR code and press the Scan QR code button.\n</li>
+        <li>If your scanned QR is unsuccessful, try to scan it again.\n</li>
+        <li>After successfully scanning, you can press the Go Back to Home button or View Attended Events button.\n</li>
+    </string>
+
+    <string name="view_help">
+        <li>In case you need help or guide for this application, just press the question mark logo on the upper right of the page.</li>
+    </string>
+
+    <string name="change_login_credentials">
+        <li>To change or reset the login credentials, kindly inform your Department Chair’s to be able to change it.</li>
+    </string>
+    <string name="registerURL">https://thomasianjourney.website/register/registerUser</string>
+    <string name="registerCheckCodeURL">https://thomasianjourney.website/register/checkCode</string>
+    <string name="studentDetails">https://thomasianjourney.website/register/studentdetails</string>
+    <string name="title_activity_gps">GPSActivity</string>
+    <string name="shared_preferences_name">mobile.thomasianJourney.main.register.USER_CREDENTIALS</string>
+    <string name="get4vents">https://thomasianjourney.website/register/get4Events</string>
+    <string name="title_activity_on_board">OnBoardActivity</string>
+
+    <string name="privacy">
+        Privacy Policy \n
+============== \n
+
+\n Effective date: April 04, 2019
+
+\n Thomasian Journey (\"us\", \"we\", or \"our\") operates the Thomasian Journey mobile
+\n application (hereinafter referred to as the \"Service\").
+
+\n This page informs you of our policies regarding the collection, use, and
+\n disclosure of personal data when you use our Service and the choices you have
+\n associated with that data. The Privacy Policy for Thomasian Journey has been
+\n created with the help of [TermsFeed Privacy Policy
+\n Generator](https://termsfeed.com/privacy-policy/generator/).
+
+\n We use your data to provide and improve the Service. By using the Service, you
+\n agree to the collection and use of information in accordance with this policy.
+\n Unless otherwise defined in this Privacy Policy, the terms used in this
+\n Privacy Policy have the same meanings as in our Terms and Conditions.
+
+\n Definitions
+\n -----------
+
+\n  * Service
+
+\n    Service is the Thomasian Journey mobile application operated by Thomasian
+\n    Journey
+
+\n  * Personal Data
+
+\n    Personal Data means data about a living individual who can be identified
+\n    from those data (or from those and other information either in our
+\n    possession or likely to come into our possession).
+
+\n  * Usage Data
+
+\n    Usage Data is data collected automatically either generated by the use of
+\n    the Service or from the Service infrastructure itself (for example, the
+\n    duration of a page visit).
+
+\n  * Cookies
+
+\n    Cookies are small files stored on your device (computer or mobile device).
+
+\n Information Collection and Use
+\n ------------------------------
+
+\n We collect several different types of information for various purposes to
+\n provide and improve our Service to you.
+
+\n Types of Data Collected
+\n ~~~~~~~~~~~~~~~~~~~~~~~
+
+\n Personal Data
+\n *************
+
+\n While using our Service, we may ask you to provide us with certain personally
+\n identifiable information that can be used to contact or identify you
+\n (\"Personal Data\"). Personally identifiable information may include, but is not
+\n limited to:
+
+\n  * Email address
+\n  * First name and last name
+\n  * Phone number
+\n  * Cookies and Usage Data
+
+\n Usage Data
+\n **********
+
+\n When you access the Service by or through a mobile device, we may collect
+\n certain information automatically, including, but not limited to, the type of
+\n mobile device you use, your mobile device unique ID, the IP address of your
+\n mobile device, your mobile operating system, the type of mobile Internet
+\n browser you use, unique device identifiers and other diagnostic data (/"Usage
+\n Data/").
+
+\n Tracking &amp; Cookies Data
+\n ************
+
+\n We use cookies and similar tracking technologies to track the activity on our
+\nService and we hold certain information.
+
+\n Cookies are files with a small amount of data which may include an anonymous
+\n unique identifier. Cookies are sent to your browser from a website and stored
+\n on your device. Other tracking technologies are also used such as beacons,
+\n tags and scripts to collect and track information and to improve and analyse
+\n our Service.
+
+\n You can instruct your browser to refuse all cookies or to indicate when a
+\n cookie is being sent. However, if you do not accept cookies, you may not be
+\n able to use some portions of our Service.
+
+\n Examples of Cookies we use:
+
+\n  * Session Cookies. We use Session Cookies to operate our Service.
+\n  * Preference Cookies. We use Preference Cookies to remember your preferences
+\n    and various settings.
+\n  * Security Cookies. We use Security Cookies for security purposes.
+
+\n Use of Data
+\n -----------
+
+\n Thomasian Journey uses the collected data for various purposes:
+
+\n  * To provide and maintain the Service
+\n  * To notify you about changes to our Service
+\n  * To allow you to participate in interactive features of our Service when
+\n    you choose to do so
+\n  * To provide customer care and support
+\n  * To provide analysis or valuable information so that we can improve the
+\n    Service
+\n  * To monitor the usage of the Service
+\n  * To detect, prevent and address technical issues
+
+\n Transfer Of Data
+\n ----------------
+
+\n Your information, including Personal Data, may be transferred to - and
+\n maintained on - computers located outside of your state, province, country or
+\n other governmental jurisdiction where the data protection laws may differ than
+\n those from your jurisdiction.
+
+\n If you are located outside Philippines and choose to provide information to
+\n us, please note that we transfer the data, including Personal Data, to
+\n Philippines and process it there.
+
+\n Your consent to this Privacy Policy followed by your submission of such
+\n information represents your agreement to that transfer.
+
+\n Thomasian Journey will take all steps reasonably necessary to ensure that your
+\n data is treated securely and in accordance with this Privacy Policy and no
+\n transfer of your Personal Data will take place to an organization or a country
+\n unless there are adequate controls in place including the security of your
+\n data and other personal information.
+
+\n Disclosure Of Data
+\n ------------------
+
+\n Legal Requirements
+\n ~~~~~~~~~~~~~~~~~~
+
+\n Thomasian Journey may disclose your Personal Data in the good faith belief
+\n that such action is necessary to:
+
+\n  * To comply with a legal obligation
+\n  * To protect and defend the rights or property of Thomasian Journey
+\n  * To prevent or investigate possible wrongdoing in connection with the
+\n    Service
+\n  * To protect the personal safety of users of the Service or the public
+\n  * To protect against legal liability
+
+\n As an European citizen, under GDPR, you have certain individual rights. You
+\n can learn more about these guides in the [GDPR
+\n Guide](https://termsfeed.com/blog/gdpr/#Individual_Rights_Under_the_GDPR).
+
+\n Security of Data
+\n ----------------
+
+\n The security of your data is important to us but remember that no method of
+\n transmission over the Internet or method of electronic storage is 100% secure.
+\n While we strive to use commercially acceptable means to protect your Personal
+\n Data, we cannot guarantee its absolute security.
+
+\n Service Providers
+\n -----------------
+
+\n We may employ third party companies and individuals to facilitate our Service
+\n (\"Service Providers\"), to provide the Service on our behalf, to perform
+\n Service-related services or to assist us in analyzing how our Service is used.
+
+\n These third parties have access to your Personal Data only to perform these
+\n tasks on our behalf and are obligated not to disclose or use it for any other
+\n purpose.
+
+\n Links to Other Sites
+\n --------------------
+
+\n Our Service may contain links to other sites that are not operated by us. If
+\n you click a third party link, you will be directed to that third party\'s site.
+\n We strongly advise you to review the Privacy Policy of every site you visit.
+
+\n We have no control over and assume no responsibility for the content, privacy
+\n policies or practices of any third party sites or services.
+
+\n Children\'s Privacy
+\n ------------------
+
+\n Our Service does not address anyone under the age of 18 (\"Children\").
+
+\n We do not knowingly collect personally identifiable information from anyone
+\n under the age of 18. If you are a parent or guardian and you are aware that
+\n your Child has provided us with Personal Data, please contact us. If we become
+\n aware that we have collected Personal Data from children without verification
+\n of parental consent, we take steps to remove that information from our
+\n servers.
+
+\n Changes to This Privacy Policy
+\n ------------------------------
+
+\n We may update our Privacy Policy from time to time. We will notify you of any
+\n changes by posting the new Privacy Policy on this page.
+
+\n We will let you know via email and/or a prominent notice on our Service, prior
+\n to the change becoming effective and update the \"effective date\" at the top of
+\n this Privacy Policy.
+
+\n You are advised to review this Privacy Policy periodically for any changes.
+\n Changes to this Privacy Policy are effective when they are posted on this
+\n page.
+
+\n Contact Us
+\n ----------
+
+\n If you have any questions about this Privacy Policy, please contact us:
+
+\n  * By email: Thomasianjourney@ust.edu.ph
+
+</string>
+
+</resources>
+
+
