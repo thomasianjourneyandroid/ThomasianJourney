@@ -686,6 +686,7 @@ public class HomeActivity extends AppCompatActivity {
 //            }
 //            textView.setText(s);
             insertList(s);
+            //Log.d("DoubleList", "From HomeActivity");
 //            Toast.makeText(getContext(), ""+s, Toast.LENGTH_SHORT).show();
 
         }

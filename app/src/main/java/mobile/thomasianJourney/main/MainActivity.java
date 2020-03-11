@@ -152,9 +152,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
-
     // list view adapter
 
     class MyAdapter extends ArrayAdapter<String> {

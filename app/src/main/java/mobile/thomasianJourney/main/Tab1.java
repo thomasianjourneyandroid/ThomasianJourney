@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,19 +67,19 @@ public class Tab1 extends Fragment {
 
             if(tabs != null && tabs[0].equals("true")){
                 rootView = inflater.inflate(R.layout.activity_year1, container, false);
-                SharedPreferences sharedPreferences =
-                        getActivity().getSharedPreferences(rootView.getResources().getString(R.string.shared_preferences_name), Context.MODE_PRIVATE);
+//                SharedPreferences sharedPreferences =
+//                        getActivity().getSharedPreferences(rootView.getResources().getString(R.string.shared_preferences_name), Context.MODE_PRIVATE);
+//
+//                String accountId =
+//                        sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENTS_ID, "");
+//                String collegeId =
+//                        sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENT_COLLEGE_ID, "");
+//
+//                String yearLevel =
+//                        sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENT_YEAR_LEVEL_ID, "");
 
-                String accountId =
-                        sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENTS_ID, "");
-                String collegeId =
-                        sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENT_COLLEGE_ID, "");
-
-                String yearLevel =
-                        sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENT_YEAR_LEVEL_ID, "");
-
-                Tab1.OkHttpHandler okHttpHandler = new Tab1.OkHttpHandler();
-                okHttpHandler.execute(url, collegeId, yearLevel, accountId);
+                //Tab1.OkHttpHandler okHttpHandler = new Tab1.OkHttpHandler();
+                //okHttpHandler.execute(url, collegeId, yearLevel, accountId);
 
 
                 rootView = inflater.inflate(R.layout.tab1, container, false);
@@ -185,6 +186,7 @@ public class Tab1 extends Fragment {
 //            }
 //            textView.setText(s);
             insertList(s);
+            //Log.d("DoubleList", "From Tab 1");
 //            Toast.makeText(getContext(), ""+s, Toast.LENGTH_SHORT).show();
 
         }
