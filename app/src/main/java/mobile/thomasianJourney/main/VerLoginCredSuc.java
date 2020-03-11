@@ -68,7 +68,7 @@ public class VerLoginCredSuc extends AppCompatActivity {
                 getSharedPreferences(getString(R.string.shared_preferences_name),
                         Context.MODE_PRIVATE);
 
-//        String email1 =
+        String email1 =
                 sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_EMAIL_ADDRESS, "");
 
 //        email.setText(email1);
@@ -90,6 +90,9 @@ public class VerLoginCredSuc extends AppCompatActivity {
 
             }
         });
+
+        email = findViewById(R.id.email);
+        email.setText(email1 + " account");
     }
 
     @Override
@@ -120,7 +123,8 @@ public class VerLoginCredSuc extends AppCompatActivity {
                     if(info[0].equals(id)){
                         String accountId =
                                 sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENTS_ID, "");
-                        String yearLevel = "2";
+                        String yearLevel = sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENT_YEAR_LEVEL_ID, "");
+                        //String yearLevel = "2";
                         OkHttpHandler okHttpHandler = new OkHttpHandler();
                         okHttpHandler.execute(url, accountId ,id, yearLevel);
                         Intent i = new Intent(VerLoginCredSuc.this, ScanSuccess.class);
