@@ -46,7 +46,7 @@ public class ScanSuccess extends AppCompatActivity {
     public void PortAnim(View view) {
         if (view == findViewById(R.id.vport_btn)) {
             //go to portfolio
-            startActivity(new Intent(this, Portfolio.class));
+            startActivity(new Intent(this, MenuPortfolio.class));
             //add animation
             Animatoo.animateCard(this);
             finish();
