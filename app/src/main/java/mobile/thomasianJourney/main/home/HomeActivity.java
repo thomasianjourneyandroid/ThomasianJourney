@@ -568,7 +568,7 @@ public class HomeActivity extends AppCompatActivity {
 
     }
     public void get4events(String s){
-        Log.i("","thhe String = "+s);
+        Log.i("","the String = "+s);
         if (!TextUtils.isEmpty(s)) {
             Gson gson = new Gson();
 
@@ -579,10 +579,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 if (jsonObject.has("data")) {
 
-
-
-
-                        JsonArray dataArray = jsonObject.get("data").getAsJsonArray();
+                    JsonArray dataArray = jsonObject.get("data").getAsJsonArray();
                     if (dataArray != null) {
                         for (int i = 0 ; i < dataArray.size() ; i++){
 

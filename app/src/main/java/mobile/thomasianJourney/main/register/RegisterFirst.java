@@ -57,7 +57,7 @@ public class RegisterFirst extends AppCompatActivity {
 				String email = registerFirst_emailAddress.getText().toString();
 				String mobile = registerFirst_mobileNumber.getText().toString();
 
-				if (email.isEmpty() && mobile.isEmpty()) {
+				if (email.isEmpty() || mobile.isEmpty()) {
 					Toast.makeText(RegisterFirst.this, "Email and Mobile number cannot be empty ", Toast.LENGTH_SHORT).show();
 				}
 
