@@ -40,7 +40,8 @@ public class GPSActivity extends AppCompatActivity {
     //    14.580826, 121.085796
     //public double defaultLongitude =  121.085796;
     //public double defaultLatitude = 14.580826;
-    public double ScopeRadiusMeters = 336;
+    //public double ScopeRadiusMeters = 336;
+    public double ScopeRadiusMeters = 353;
     Intent intent;
 
     private Button b;

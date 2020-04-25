@@ -2,7 +2,9 @@ package mobile.thomasianJourney.main;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
@@ -74,10 +76,14 @@ public class EventDetails extends AppCompatActivity {
 
         OkHttpHandler2 okHttpHandler2 = new OkHttpHandler2();
 
+        SharedPreferences sharedPreferences = getSharedPreferences("sp", Context.MODE_PRIVATE);
+
+        int studentId = sharedPreferences.getInt("studentsId", -1);
+
         Intent i = getIntent();
         String id = i.getExtras().getString("activityId");
-        String accountId = "1";
-        okHttpHandler2.execute(eventUrl, id, accountId);
+        //String accountId = "1";
+        okHttpHandler2.execute(eventUrl, id, studentId + "");
 
 
         btnAttend = (Button) findViewById(R.id.attend);
