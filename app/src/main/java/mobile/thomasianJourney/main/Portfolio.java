@@ -191,10 +191,10 @@ public class Portfolio extends AppCompatActivity {
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
             LayoutInflater layoutInflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row = layoutInflater.inflate(R.layout.row, parent, false);
-            Button myDate = row.findViewById(R.id.button1);
+            //Button myDate = row.findViewById(R.id.button1);
 //            TextView myTitle = row.findViewById(R.id.text1);
             TextView myDescription = row.findViewById(R.id.text2);
-            myDate.setText(dates[position]);
+            //myDate.setText(dates[position]);
 //            myTitle.setText(titles[position]);
             myDescription.setText(descriptions[position]);
             return row;

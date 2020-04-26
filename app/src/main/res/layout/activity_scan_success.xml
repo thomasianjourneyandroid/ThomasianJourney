@@ -19,10 +19,12 @@
             android:adjustViewBounds="true"
             android:background="@drawable/background_gradient"
             android:cropToPadding="false" />
+
         <ImageView
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="0dp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -74,9 +76,9 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="15dp"
+            android:layout_height="110dp"
             android:layout_gravity="bottom"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
 
@@ -110,8 +112,22 @@
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent" />
 
-        </android.support.constraint.ConstraintLayout>
+            <Button
+                android:id="@+id/vport_btn2"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@drawable/bgbtn"
+                android:fontFamily="@font/poppinsmedium"
+                android:onClick="PortAnim"
+                android:text="PRINT\nSTICKER"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                tools:layout_editor_absoluteX="105dp"
+                tools:layout_editor_absoluteY="56dp" />
 
+        </android.support.constraint.ConstraintLayout>
 
 
     </LinearLayout>

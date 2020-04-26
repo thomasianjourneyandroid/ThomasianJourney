@@ -67,8 +67,8 @@ public class HomeActivity extends AppCompatActivity {
             animationDown5,
             animationDown6;
     //private String buttons[] ={"streambtn1","streambtn2","streambtn3","button1"};
-    private int dates[] ={R.id.streambtn1,R.id.streambtn2,R.id.streambtn3,R.id.button1};
-    private int eventnames[] = {R.id.EventName1,R.id.EventName2,R.id.EventName3,R.id.EventName4};
+    //private int dates[] ={R.id.streambtn1,R.id.streambtn2,R.id.streambtn3,R.id.button1};
+    //private int eventnames[] = {R.id.EventName1,R.id.EventName2,R.id.EventName3,R.id.EventName4};
     public String url = "https://thomasianjourney.website/Register/checkEvents";
     public String[] eventtab = {"false","false","false"};
     @Override
@@ -86,7 +86,7 @@ public class HomeActivity extends AppCompatActivity {
         dialog_help = new Dialog(HomeActivity.this);
         dialog_help.setContentView(R.layout.dialog_help);
         initializeHelpDialog();
-        LocalBroadcastManager.getInstance(this).registerReceiver(mHandler, new IntentFilter("mobile.thomasianJourney.main_FCM-MESSAGE"));
+        //LocalBroadcastManager.getInstance(this).registerReceiver(mHandler, new IntentFilter("mobile.thomasianJourney.main_FCM-MESSAGE"));
         home_studentNumber.setText("");
         home_totalPoints.setText("");
         home_currentDate.setText(DateFormat.getDateInstance(DateFormat.FULL).format(Calendar.getInstance().getTime()));
@@ -136,7 +136,7 @@ public class HomeActivity extends AppCompatActivity {
             AsyncResponse asyncResponse2 = new AsyncResponse() {
                 @Override
                 public void doWhenFinished(String output) {
-                    get4events(output);
+                    //get4events(output);
                 }
             };
 
@@ -558,6 +558,15 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+    public void CalendarAnim(View view) {
+        if (view == findViewById(R.id.calendarId)) {
+            //open viewevents
+            //startActivity(new Intent(this, MenuPortfolio.class));
+            //add animation
+            //Animatoo.animateCard(this);
+        }
+    }
+/*
     public void StreamAnim1(View view) {
         if (view == findViewById(R.id.stream1)) {
             //open viewevents
@@ -565,8 +574,10 @@ public class HomeActivity extends AppCompatActivity {
             //add animation
             Animatoo.animateCard(this);
         }
-
     }
+
+ */
+/*
     public void get4events(String s){
         Log.i("","the String = "+s);
         if (!TextUtils.isEmpty(s)) {
@@ -630,7 +641,7 @@ public class HomeActivity extends AppCompatActivity {
 
         }
     };
-
+*/
     public class OkHttpHandler extends AsyncTask<String, Void, String> {
 
         OkHttpClient client = new OkHttpClient.Builder()

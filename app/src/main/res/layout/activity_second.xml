@@ -68,9 +68,6 @@ android:background="#fcfcfc">
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.demotxt.droidsrce.homedashboard.Home"
@@ -189,12 +186,13 @@ android:background="#fcfcfc">
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center">
+
                     <ImageView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:background="@drawable/circlebtnbg1"
-                        android:src="@drawable/ic_receipt"
-                        android:padding="10dp"/>
+                        android:padding="10dp"
+                        android:src="@drawable/ic_receipt" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -209,292 +207,56 @@ android:background="#fcfcfc">
 
         </LinearLayout>
 
+        <android.support.v7.widget.CardView
+            android:id="@+id/calendarId"
+            android:layout_width="140dp"
+            android:layout_height="150dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="6dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/circlebtnbg1"
+                    android:padding="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:text="View Calendar"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView><![CDATA[
+
         -----> card view 1 long
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:fontFamily="@font/poppinsmedium"
-            android:text="Event Stream"
-            android:textColor="#000000"
-            android:textSize="18dp"
-            android:textStyle="bold" />
 
 
-        <LinearLayout
-            android:clipToPadding="false"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/stream1"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:clickable="false"
-                app:cardCornerRadius="10dp"
-                android:layout_width="340dp"
-                android:layout_height="90dp"
-                android:layout_margin="10dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="false">
-
-                    <TextView
-                        android:id="@+id/EventName1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="100dp"
-                        android:clickable="false"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="Science Week Opening Ceremony"
-                        android:textSize="15dp"
-                        android:fontFamily="@font/poppinsmedium"/>
-
-                    <Button
-                        android:id="@+id/streambtn1"
-                        android:clickable="false"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="Feb 26"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/poppinssemibold"/>
-                    <View
-                        android:id="@+id/line1"
-                        android:layout_width="4dp"
-                        android:layout_height="80dp"
-                        android:clickable="false"
-                        android:layout_marginLeft="90dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:background="@color/colorPrimary"/>
-
-                </RelativeLayout>
-
-
-
-
-            </android.support.v7.widget.CardView>
-
-
-        </LinearLayout>
 
         ---> 2
-        <LinearLayout
-            android:clipToPadding="false"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clickable="false">
 
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/stream2"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:clickable="false"
-                app:cardCornerRadius="10dp"
-                android:layout_width="340dp"
-                android:layout_height="90dp"
-                android:layout_margin="2dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="false">
-
-                    <TextView
-                        android:id="@+id/EventName2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="100dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="Science Week Opening Ceremony"
-                        android:textSize="15dp"
-                        android:clickable="false"
-                        android:fontFamily="@font/poppinsmedium"/>
-
-                    <Button
-                        android:id="@+id/streambtn2"
-                        android:clickable="false"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="Date"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/poppinssemibold"/>
-                    <View
-                        android:id="@+id/line1"
-                        android:layout_width="4dp"
-                        android:layout_height="80dp"
-                        android:clickable="false"
-                        android:layout_marginLeft="90dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:background="@color/colorPrimary"/>
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-        </LinearLayout>
         ----> 3
 
-        <LinearLayout
-            android:clipToPadding="false"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="false">
 
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/stream3"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:clickable="false"
-                app:cardCornerRadius="10dp"
-                android:layout_width="340dp"
-                android:layout_height="90dp"
-                android:layout_margin="10dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="false">
-
-                    <TextView
-                        android:id="@+id/EventName3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="100dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
-                        android:clickable="false"
-                        android:layout_marginBottom="5dp"
-                        android:text="Science Week Opening Ceremony"
-                        android:textSize="15dp"
-                        android:fontFamily="@font/poppinsmedium"/>
-
-                    <Button
-                        android:id="@+id/streambtn3"
-                        android:clickable="false"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="Date"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/poppinssemibold"/>
-                    <View
-                        android:id="@+id/line1"
-                        android:layout_width="4dp"
-                        android:layout_height="80dp"
-                        android:layout_marginLeft="90dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:background="@color/colorPrimary"/>
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
 
         ----> 4
 
-        <LinearLayout
-            android:clipToPadding="false"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clickable="false">
-
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/stream4"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:clickable="false"
-                app:cardCornerRadius="10dp"
-                android:layout_width="340dp"
-                android:layout_height="90dp"
-                android:layout_margin="2dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="false">
-
-                    <TextView
-                        android:id="@+id/EventName4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="100dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="Science Week Opening Ceremony"
-                        android:clickable="false"
-                        android:textSize="15dp"
-                        android:fontFamily="@font/poppinsmedium"/>
-
-
-                    <Button
-                        android:id="@+id/button1"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
-                        android:clickable="false"
-                        android:layout_marginBottom="5dp"
-                        android:text="Date"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/poppinssemibold"/>
-                    <View
-                        android:id="@+id/line1"
-                        android:layout_width="4dp"
-                        android:clickable="false"
-                        android:layout_height="80dp"
-                        android:layout_marginLeft="90dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:background="@color/colorPrimary"/>
-
-                </RelativeLayout>
 
 
 
 
-            </android.support.v7.widget.CardView>
-
-
-        </LinearLayout>
-
-
-
+    ]]>
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>
