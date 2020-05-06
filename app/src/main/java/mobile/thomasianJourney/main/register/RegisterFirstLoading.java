@@ -67,7 +67,13 @@ public class RegisterFirstLoading extends AppCompatActivity {
 		stepsBeanList.add(stepBean2);
 
 		stepview.setStepViewTexts(stepsBeanList).setTextSize(12)//set textSize
-				.setStepsViewIndicatorCompletedLineColor(ContextCompat.getColor(RegisterFirstLoading.this, android.R.color.black)).setStepsViewIndicatorUnCompletedLineColor(ContextCompat.getColor(RegisterFirstLoading.this, R.color.uncompleted_text_color)).setStepViewComplectedTextColor(ContextCompat.getColor(RegisterFirstLoading.this, android.R.color.black)).setStepViewUnComplectedTextColor(ContextCompat.getColor(RegisterFirstLoading.this, R.color.uncompleted_text_color)).setStepsViewIndicatorCompleteIcon(ContextCompat.getDrawable(RegisterFirstLoading.this, R.drawable.ic_check_black)).setStepsViewIndicatorDefaultIcon(ContextCompat.getDrawable(RegisterFirstLoading.this, R.drawable.ic_radio)).setStepsViewIndicatorAttentionIcon(ContextCompat.getDrawable(RegisterFirstLoading.this, R.drawable.tiger_rar));
+				.setStepsViewIndicatorCompletedLineColor(ContextCompat.getColor(RegisterFirstLoading.this, android.R.color.black))
+				.setStepsViewIndicatorUnCompletedLineColor(ContextCompat.getColor(RegisterFirstLoading.this, R.color.uncompleted_text_color))
+				.setStepViewComplectedTextColor(ContextCompat.getColor(RegisterFirstLoading.this, android.R.color.black))
+				.setStepViewUnComplectedTextColor(ContextCompat.getColor(RegisterFirstLoading.this, R.color.uncompleted_text_color))
+				.setStepsViewIndicatorCompleteIcon(ContextCompat.getDrawable(RegisterFirstLoading.this, R.drawable.ic_check_black))
+				.setStepsViewIndicatorDefaultIcon(ContextCompat.getDrawable(RegisterFirstLoading.this, R.drawable.ic_radio))
+				.setStepsViewIndicatorAttentionIcon(ContextCompat.getDrawable(RegisterFirstLoading.this, R.drawable.tiger_rar));
 
 		// Lottie animation initialization
 		LottieAnimationView registerFirstLoading_lottieAnimationView = findViewById(R.id.registerFirstLoading_lottieAnimationView);

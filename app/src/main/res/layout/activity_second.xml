@@ -62,88 +62,162 @@ android:background="#fcfcfc">
 
 </android.support.design.widget.AppBarLayout>
 
-<android.support.v4.widget.NestedScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-    <LinearLayout
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.demotxt.droidsrce.homedashboard.Home"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:gravity="center"
-        android:id="@+id/ll"
-        android:background="@drawable/background_gradient">
-
-        <android.support.v7.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:id="@+id/textdashId"
-            app:cardCornerRadius="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_margin="0dp"
-            app:cardElevation="6dp"
-            app:cardBackgroundColor="#dcffffff">
-
-            <TextView
-                android:id="@+id/home_studentNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="@font/poppinsmedium"
-                android:text=""
-                android:textColor="#000000"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-        <TextView
-            android:id="@+id/home_totalPoints"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginTop="28dp"
-            android:layout_marginLeft="10dp"
-            android:fontFamily="@font/poppinsmedium"
-            android:text=""
-            android:textColor="#000000"
-            android:textSize="16dp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/home_currentDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginTop="52dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp"
-            android:fontFamily="@font/poppinsregular"
-            android:text="*Current Date*"
-            android:textColor="#000000"
-            android:textSize="16dp"
-            android:textStyle="bold" />
-
-        </android.support.v7.widget.CardView>
+        android:layout_height="431dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
-            android:clipToPadding="false"
-            android:gravity="center"
-            android:orientation="horizontal"
+            android:id="@+id/ll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_height="match_parent"
+            android:background="@drawable/background_gradient"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
             <android.support.v7.widget.CardView
-                android:foreground="?android:attr/selectableItemBackground"
+                android:id="@+id/textdashId"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_margin="0dp"
                 android:clickable="true"
-                android:onClick="EventsAnim"
-                android:id="@+id/eventId"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardBackgroundColor="#dcffffff"
                 app:cardCornerRadius="10dp"
+                app:cardElevation="6dp">
+
+                <TextView
+                    android:id="@+id/home_studentNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/home_totalPoints"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="28dp"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/home_currentDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="52dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/poppinsregular"
+                    android:text="*Current Date*"
+                    android:textColor="#000000"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+            </android.support.v7.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:clipToPadding="false"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/eventId"
+                    android:layout_width="140dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="10dp"
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:onClick="EventsAnim"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="6dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/circlebtnbg1"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_event" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:text="View Events"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/portId"
+                    android:layout_width="140dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="10dp"
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:onClick="PortAnim"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="6dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/circlebtnbg1"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_receipt" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:text="View Portfolio"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/calendarId"
                 android:layout_width="140dp"
                 android:layout_height="150dp"
-                android:layout_margin="10dp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardCornerRadius="10dp"
                 app:cardElevation="6dp">
 
                 <LinearLayout
@@ -152,91 +226,24 @@ android:background="#fcfcfc">
                     android:gravity="center"
                     android:orientation="vertical">
 
-
                     <ImageView
+                        android:id="@+id/imageView"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:background="@drawable/circlebtnbg1"
                         android:padding="10dp"
-                        android:src="@drawable/ic_event" />
+                        app:srcCompat="@drawable/calendar" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppinsmedium"
-                        android:text="View Events"
+                        android:text="View Calendar"
                         android:textStyle="bold" />
-
                 </LinearLayout>
             </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:foreground="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:onClick="PortAnim"
-                android:id="@+id/portId"
-                app:cardCornerRadius="10dp"
-                android:layout_width="140dp"
-                android:layout_height="150dp"
-                android:layout_margin="10dp"
-                app:cardElevation="6dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/circlebtnbg1"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_receipt" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/poppinsmedium"
-                        android:layout_marginTop="10dp"
-                        android:text="View Portfolio"/>
-
-
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/calendarId"
-            android:layout_width="140dp"
-            android:layout_height="150dp"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="6dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/circlebtnbg1"
-                    android:padding="10dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/poppinsmedium"
-                    android:text="View Calendar"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </android.support.v7.widget.CardView><![CDATA[
+            <![CDATA[
 
         -----> card view 1 long
 
@@ -259,5 +266,5 @@ android:background="#fcfcfc">
     ]]>
     </LinearLayout>
 
-</android.support.v4.widget.NestedScrollView>
+    </android.support.design.widget.CoordinatorLayout>
 </android.support.design.widget.CoordinatorLayout>
