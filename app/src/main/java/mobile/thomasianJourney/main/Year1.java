@@ -191,6 +191,9 @@ public class Year1 extends Fragment {
                 if  (jsonObject.has("data")) {
 
                     JsonArray dataArray = jsonObject.get("data").getAsJsonArray();
+
+                    Log.d("Year1Details", "Data Array: " + dataArray);
+
                     for (int i = 0 ; i < dataArray.size() ; i++){
 
                         JsonObject dataObject = dataArray.get(i).getAsJsonObject();

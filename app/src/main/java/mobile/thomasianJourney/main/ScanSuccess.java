@@ -3,6 +3,7 @@ package mobile.thomasianJourney.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -31,6 +32,10 @@ public class ScanSuccess extends AppCompatActivity {
         LottieScan.setVisibility(View.VISIBLE);
         LottieScan.setAnimation(R.raw.qr);
         LottieScan.playAnimation();
+
+        Intent i = getIntent();
+        String id = i.getExtras().getString("activityId");
+
     }
 
     public void HomeAnim(View view) {

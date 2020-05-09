@@ -14,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -127,7 +128,9 @@ public class VerLoginCredSuc extends AppCompatActivity {
                         //String yearLevel = "2";
                         OkHttpHandler okHttpHandler = new OkHttpHandler();
                         okHttpHandler.execute(url, accountId ,id, yearLevel);
+
                         Intent i = new Intent(VerLoginCredSuc.this, ScanSuccess.class);
+                        i.putExtra("activityId", id);
                         startActivity(i);
                         finish();
 

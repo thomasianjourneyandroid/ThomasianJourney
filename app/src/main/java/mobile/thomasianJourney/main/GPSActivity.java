@@ -19,6 +19,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -72,15 +73,20 @@ public class GPSActivity extends AppCompatActivity {
                 //Log.i("GPS ","GPS = "+location.getLatitude()+","+location.getLongitude()+"");
                 //t.append(" " + location.getLongitude() + " " + location.getLatitude());
                 //Log.i("Distance","Actual Distance = "+ActualDistance+"");
-                boolean isAccept = isAcceptDistance(ScopeRadiusMeters, ActualDistance);
+                boolean isAccept;
                 //edit
-                isAccept = true;
-                if(!isAccept){
+                //isAccept = true;
+
+                Log.d("DistanceValue", ""+ isAcceptDistance(ScopeRadiusMeters, ActualDistance));
+
+                if(isAcceptDistance(ScopeRadiusMeters, ActualDistance) == false){
                     errorlocation();
 
-           onPause();
+                    onPause();
 
-                }else{
+                }
+
+                else{
                     //Toast.makeText(GPSActivate.this,"Acceptable = "+ isAccept , Toast.LENGTH_LONG).show();
                     onPause();
                     Intent intent2 = new Intent(GPSActivity.this, VerifyLoginCred.class);
@@ -195,13 +201,16 @@ public class GPSActivity extends AppCompatActivity {
     public static boolean isAcceptDistance(double scope, double actual){
         return actual <= scope;
     }
+
     void gpssearch(){
 
         try {
             Toast.makeText(GPSActivity.this,"GPS Searching" , Toast.LENGTH_LONG).show();
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 800, 0, listener);
             Toast.makeText(GPSActivity.this,"GPS Searching" , Toast.LENGTH_LONG).show();
-        }catch (SecurityException e){
+        }
+
+        catch (SecurityException e){
             Toast.makeText(GPSActivity.this, "Cannot find location", Toast.LENGTH_LONG).show();
         }
     }

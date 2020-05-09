@@ -17,6 +17,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -238,6 +239,7 @@ public class Portfolio extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             //Returning the current years
+            Log.d("PortfolioData", "Fragment Position: " + position);
             switch (position) {
                 case 0:
                     Year1 activity_year1 = new Year1();
@@ -263,6 +265,7 @@ public class Portfolio extends AppCompatActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
+            Log.d("PortfolioData", "CharSequence Position: " + position);
             switch (position) {
                 case 0:
                     return "1ST YEAR";

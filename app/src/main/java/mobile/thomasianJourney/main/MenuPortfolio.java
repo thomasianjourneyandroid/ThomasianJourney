@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -396,13 +397,15 @@ public class MenuPortfolio extends AppCompatActivity {
                 Gson gson = new Gson();
 
                 JsonObject jsonObject = gson.fromJson(s, JsonObject.class);
-
+//                Log.d("MenuPortfolioData", "Data Array: " + jsonObject);
                 if  (jsonObject.has("data")) {
 
                     JsonArray dataArray = jsonObject.get("data").getAsJsonArray();
+//                    Log.d("MenuPortfolioData", "Data Array: " + dataArray);
                     for (int i = 0 ; i < dataArray.size() ; i++){
                         String[] temp = new String[4];
                         JsonArray stringArray = dataArray.get(i).getAsJsonArray();
+                        Log.d("MenuPortfolioData", "String Array: " + stringArray);
                         for(int j = 0 ; j < stringArray.size() ; j++){
 
                             String data = stringArray.get(j).toString();
@@ -417,7 +420,15 @@ public class MenuPortfolio extends AppCompatActivity {
                         }else if(i == 3){
                             year4 = temp;
                         }
+
+                        //Log.d("MenuPortfolioData", stringArray + " ");
                     }
+
+//                    Log.d("MenuPortfolioData", "Year 1 Data: " + year1);
+//                    Log.d("MenuPortfolioData", "Year 2 Data: " + year2);
+//                    Log.d("MenuPortfolioData", "Year 3 Data: " + year3);
+//                    Log.d("MenuPortfolioData", "Year 4 Data: " + year4);
+
                 }else{
 
                 }
