@@ -119,7 +119,7 @@
                 android:layout_gravity="right"
                 android:background="@drawable/bgbtn"
                 android:fontFamily="@font/poppinsmedium"
-                android:onClick="PortAnim"
+                android:onClick="StickerAnim"
                 android:text="PRINT\nSTICKER"
                 android:textAllCaps="false"
                 android:textColor="#000000"

@@ -10,4 +10,5 @@ public class IntentExtrasAddresses {
 	public static final String INTENT_EXTRA_STUDENT_POINTS = "studentPoints";
 	public static final String INTENT_EXTRA_STUDENT_COLLEGE_ID = "studentCollegeId";
 	public static final String INTENT_EXTRA_STUDENT_YEAR_LEVEL_ID = "studentYearLevelId";
+	public static final String INTENT_EXTRA_STUDENT_NO = "studentNumber";
 }

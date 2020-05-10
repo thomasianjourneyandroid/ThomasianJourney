@@ -301,15 +301,19 @@ public class HomeActivity extends AppCompatActivity {
                             String emailAddress = dataObject.get("studregEmail").getAsString();
                             String mobileNumber = dataObject.get("studregmobileNum").getAsString();
                             //int studentsId = dataObject.get("studNumber").getAsInt();
-                            String studentsId = dataObject.get("studNumber").getAsString();
+                            String studentNumber = dataObject.get("studNumber").getAsString();
+
+                            SharedPreferences sharedPreferences = getSharedPreferences("mobile.thomasianJourney.main.register.USER_CREDENTIALS", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString(IntentExtrasAddresses.INTENT_EXTRA_STUDENT_NO, studentNumber);
+                            editor.apply();
 
                             int studPoints = dataObject.get("studPoints").getAsInt();
                             String studname = dataObject.get("studregName").getAsString();
 
-                            home_studentNumber.setText("Student Number: "+studentsId + "");
+                            home_studentNumber.setText("Student Number: "+studentNumber + "");
                             home_totalPoints.setText("Accumulated Points: "+studPoints+"");
                             home_Welcome.setText("Welcome, "+studname);
-
 /*
                             Intent intent = new Intent(RegisterFirstLoading.this, RegisterSecond.class);
                             intent.putExtra(IntentExtrasAddresses.INTENT_EXTRA_EMAIL_ADDRESS, emailAddress);
