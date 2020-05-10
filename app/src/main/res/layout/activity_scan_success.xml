@@ -76,7 +76,7 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="110dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginTop="15dp"
             android:orientation="horizontal">
@@ -93,16 +93,17 @@
                 android:text="BACK\nTO HOME"
                 android:textAllCaps="false"
                 android:textColor="#000000"
-                android:textSize="15sp" />
-
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/vport_btn"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
                 android:background="@drawable/bgbtn"
                 android:fontFamily="@font/poppinsmedium"
                 android:onClick="PortAnim"
@@ -110,13 +111,19 @@
                 android:textAllCaps="false"
                 android:textColor="#000000"
                 android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.995"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/vsticker_btn"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
+                android:layout_marginStart="105dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="105dp"
                 android:background="@drawable/bgbtn"
                 android:fontFamily="@font/poppinsmedium"
                 android:onClick="StickerAnim"
@@ -124,8 +131,10 @@
                 android:textAllCaps="false"
                 android:textColor="#000000"
                 android:textSize="15sp"
-                tools:layout_editor_absoluteX="105dp"
-                tools:layout_editor_absoluteY="56dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </android.support.constraint.ConstraintLayout>
 
