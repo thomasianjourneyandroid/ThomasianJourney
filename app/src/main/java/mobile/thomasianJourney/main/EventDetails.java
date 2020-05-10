@@ -31,7 +31,6 @@ import com.google.gson.JsonObject;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -86,7 +85,7 @@ public class EventDetails extends AppCompatActivity {
         okHttpHandler2.execute(eventUrl, id, studentId + "");
 
 
-        btnAttend = (Button) findViewById(R.id.attend);
+        btnAttend = (Button) findViewById(R.id.vsticker_btn);
 
 //        attend.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -496,7 +495,7 @@ public class EventDetails extends AppCompatActivity {
                     tv_time.setText(formattedTime + " : " +formattedEndTime);
                     tv_description.setText(description);
                     tv_point.setText(points + " Points");
-                    btnAttend = findViewById(R.id.attend);
+                    btnAttend = findViewById(R.id.vsticker_btn);
                     if(attend.equals("1")){
                         btnAttend.setVisibility(View.INVISIBLE);
                     }
@@ -567,8 +566,8 @@ public class EventDetails extends AppCompatActivity {
     //ANIMATION
 
     public void ScanAnim(View view) {
-        if (view == findViewById(R.id.attend)) {
-            btnAttend = findViewById(R.id.attend);
+        if (view == findViewById(R.id.vsticker_btn)) {
+            btnAttend = findViewById(R.id.vsticker_btn);
             btnAttend.setClickable(false);
             OkHttpHandler okHttpHandler = new OkHttpHandler();
             //DITO PAPASOK YUNG ID NG EVENT SA VIEW EVENTS

@@ -102,6 +102,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
+            android:name="mobile.thomasianJourney.main.AttendedEvent"
+            android:label="Event Details"
+            android:parentActivityName="mobile.thomasianJourney.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name="mobile.thomasianJourney.main.ScanSuccess"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Dark.NoActionBar.FullScreen">

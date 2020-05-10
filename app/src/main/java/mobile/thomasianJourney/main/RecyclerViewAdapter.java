@@ -65,7 +65,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, int i) {
         String dateTime = mData.get(i).getDate();
         String date = dateTime.split(" ")[0];
         String month = date.split("-")[1];
@@ -180,13 +180,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 myViewHolder.item_contact.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(mContext, "Event already attended", Toast.LENGTH_LONG).show();
+                        String id = myViewHolder.activityId.getText().toString().trim();
+                        Intent i = new Intent(mContext, AttendedEvent.class);
+                        i.putExtra("activityId", id);
+                        mContext.startActivity(i);
+
                     }
                 });
                 myViewHolder.date.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(mContext, "Event already attended", Toast.LENGTH_LONG).show();
+                        String id = myViewHolder.activityId.getText().toString().trim();
+                        Intent i = new Intent(mContext, AttendedEvent.class);
+                        i.putExtra("activityId", id);
+                        mContext.startActivity(i);
                     }
                 });
                 break;

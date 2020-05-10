@@ -204,7 +204,7 @@
                             android:background="@color/colorPrimary" />
 
                         <Button
-                            android:id="@+id/attend"
+                            android:id="@+id/vsticker_btn"
                             android:onClick="ScanAnim"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"

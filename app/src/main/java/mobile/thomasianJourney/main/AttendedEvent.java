@@ -1,6 +1,7 @@
 package mobile.thomasianJourney.main;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -8,21 +9,29 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.airbnb.lottie.LottieAnimationView;
-import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.itextpdf.text.BadElementException;
@@ -49,7 +58,6 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Locale;
 
-import mobile.thomasianJourney.main.home.HomeActivity;
 import mobile.thomasianJourney.main.register.utils.IntentExtrasAddresses;
 import mobile.thomasianJourney.main.vieweventsfragments.R;
 import okhttp3.ConnectionSpec;
@@ -59,12 +67,17 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+public class AttendedEvent extends AppCompatActivity {
+    private OkHttpClient client;
+    private Button btnAttend;
+    Dialog dialog_help;
+    ImageView closeDialogHelp, img_help;
+    TextView txtContent1, txtContent2, txtContent3, txtContent4, txtContent5, txtContent6;
+    Animation animationUp, animationUp1, animationUp2, animationUp3, animationUp4,animationUp5, animationUp6;
+    Animation animationDown, animationDown1, animationDown2, animationDown3, animationDown4, animationDown5, animationDown6 ;
+    TextView tv_date, tv_title, tv_description, tv_venue, tv_time, tv_point;
 
-public class ScanSuccess extends AppCompatActivity {
-    private Button vhome_btn;
-    private Button vport_btn;
-    private LottieAnimationView LottieScan;
-
+    RelativeLayout eventdetails;
     public String url = "https://thomasianjourney.website/Register/eventTime";
     public String eventUrl = "https://thomasianjourney.website/Register/eventDetails";
     public String stickerURL = "https://thomasianjourney.website/Register/printSticker";
@@ -78,15 +91,29 @@ public class ScanSuccess extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dialog = new ProgressDialog(this);
-        setContentView(R.layout.activity_scan_success);
+        setContentView(R.layout.activity_attendedevent);
+        tv_date = findViewById(R.id.home_currentDate);
+        tv_title = findViewById(R.id.title);
+        tv_description = findViewById(R.id.description);
+        tv_venue = findViewById(R.id.venue);
+        tv_time = findViewById(R.id.time);
+        tv_point = findViewById(R.id.point);
 
-        //ANIMATION LOTTIE
-        LottieScan = findViewById(R.id.mainlottieScan);
+        AttendedEvent.OkHttpHandler2 okHttpHandler2 = new AttendedEvent.OkHttpHandler2();
 
-        LottieScan.setScale(7f);
-        LottieScan.setVisibility(View.VISIBLE);
-        LottieScan.setAnimation(R.raw.qr);
-        LottieScan.playAnimation();
+        SharedPreferences sharedPreferences = getSharedPreferences("sp", Context.MODE_PRIVATE);
+
+        int studentId = sharedPreferences.getInt("studentsId", -1);
+
+        Intent i = getIntent();
+        String id = i.getExtras().getString("activityId");
+        //String accountId = "1";
+        okHttpHandler2.execute(eventUrl, id, studentId + "");
+
+        dialog_help = new Dialog(this);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setElevation(0);
 
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
@@ -103,20 +130,183 @@ public class ScanSuccess extends AppCompatActivity {
                 }
             }
         }
-
-        Intent i = getIntent();
-        String id = i.getExtras().getString("activityId");
-
-        OkHttpHandler2 okHttpHandler2 = new OkHttpHandler2();
-
-        SharedPreferences sharedPreferences = getSharedPreferences("sp", Context.MODE_PRIVATE);
-
-        int studentId = sharedPreferences.getInt("studentsId", -1);
-
-        okHttpHandler2.execute(eventUrl, id, studentId + "");
-
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            ShowDialogHelp();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void ShowDialogHelp() {
+        dialog_help.setContentView(R.layout.dialog_help);
+        closeDialogHelp = (ImageView) dialog_help.findViewById(R.id.closeDialogHelp);
+        txtContent1 = (TextView) dialog_help.findViewById(R.id.title_text1);
+        TextView txtTitle1 = (TextView) dialog_help.findViewById(R.id.content_text1);
+        txtContent1.setVisibility(View.GONE);
+
+        animationUp1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
+        animationDown1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
+
+        txtTitle1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(txtContent1.isShown()){
+                    txtContent1.setVisibility(View.GONE);
+                    txtContent1.startAnimation(animationUp1);
+                }
+                else{
+                    txtContent1.setVisibility(View.VISIBLE);
+                    txtContent1.startAnimation(animationDown1);
+                }
+            }
+        });
+
+        // help 2
+        txtContent2 = (TextView) dialog_help.findViewById(R.id.title_text2);
+        TextView txtTitle2 = (TextView) dialog_help.findViewById(R.id.content_text2);
+        txtContent2.setVisibility(View.GONE);
+
+        animationUp2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
+        animationDown2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
+
+        txtTitle2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(txtContent2.isShown()){
+                    txtContent2.setVisibility(View.GONE);
+                    txtContent2.startAnimation(animationUp2);
+                }
+                else{
+                    txtContent2.setVisibility(View.VISIBLE);
+                    txtContent2.startAnimation(animationDown2);
+                }
+            }
+        });
+
+        // help 3
+        txtContent3 = (TextView) dialog_help.findViewById(R.id.title_text3);
+        TextView txtTitle3 = (TextView) dialog_help.findViewById(R.id.content_text3);
+        txtContent3.setVisibility(View.GONE);
+
+        animationUp3 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
+        animationDown3 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
+
+        txtTitle3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(txtContent3.isShown()){
+                    txtContent3.setVisibility(View.GONE);
+                    txtContent3.startAnimation(animationUp3);
+                }
+                else{
+                    txtContent3.setVisibility(View.VISIBLE);
+                    txtContent3.startAnimation(animationDown3);
+                }
+            }
+        });
+
+        // help 4
+        txtContent4 = (TextView) dialog_help.findViewById(R.id.title_text4);
+        TextView txtTitle4 = (TextView) dialog_help.findViewById(R.id.content_text4);
+        txtContent4.setVisibility(View.GONE);
+
+        animationUp4 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
+        animationDown4 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
+
+        txtTitle4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(txtContent4.isShown()){
+                    txtContent4.setVisibility(View.GONE);
+                    txtContent4.startAnimation(animationUp4);
+                }
+                else{
+                    txtContent4.setVisibility(View.VISIBLE);
+                    txtContent4.startAnimation(animationDown4);
+                }
+            }
+        });
+
+        // help 5
+        txtContent5 = (TextView) dialog_help.findViewById(R.id.title_text5);
+        TextView txtTitle5 = (TextView) dialog_help.findViewById(R.id.content_text5);
+        txtContent5.setVisibility(View.GONE);
+
+        animationUp5 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
+        animationDown5 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
+
+        txtTitle5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(txtContent5.isShown()){
+                    txtContent5.setVisibility(View.GONE);
+                    txtContent5.startAnimation(animationUp5);
+                }
+                else{
+                    txtContent5.setVisibility(View.VISIBLE);
+                    txtContent5.startAnimation(animationDown5);
+                }
+            }
+        });
+
+        // help 6
+        txtContent6 = (TextView) dialog_help.findViewById(R.id.title_text6);
+        TextView txtTitle6 = (TextView) dialog_help.findViewById(R.id.content_text6);
+        txtContent6.setVisibility(View.GONE);
+
+        animationUp6 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
+        animationDown6 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
+
+        txtTitle6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(txtContent6.isShown()){
+                    txtContent6.setVisibility(View.GONE);
+                    txtContent6.startAnimation(animationUp6);
+                }
+                else{
+                    txtContent6.setVisibility(View.VISIBLE);
+                    txtContent6.startAnimation(animationDown6);
+                }
+            }
+        });
+
+
+
+
+        closeDialogHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_help.dismiss();
+            }
+
+
+        });
+
+        dialog_help.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog_help.show();
+
+
+    }
     public class OkHttpHandler extends AsyncTask<String, Void, String> {
 
         OkHttpClient client = new OkHttpClient.Builder()
@@ -167,6 +357,7 @@ public class ScanSuccess extends AppCompatActivity {
 
         }
     }
+
     public class OkHttpHandler2 extends AsyncTask<String, Void, String> {
 
         OkHttpClient client = new OkHttpClient.Builder()
@@ -230,7 +421,6 @@ public class ScanSuccess extends AppCompatActivity {
                 Gson gson = new Gson();
                 JsonObject jsonObject = gson.fromJson(s, JsonObject.class);
                 if(jsonObject.has("data")){
-
                     JsonObject dataObject = jsonObject.get("data").getAsJsonObject();
                     activityName = dataObject.get("activityName").getAsString();
                     eventVenue = dataObject.get("eventVenue").getAsString();
@@ -296,32 +486,24 @@ public class ScanSuccess extends AppCompatActivity {
 
                     }
 
+                    tv_date.setText(month + "\n" + day);
+                    tv_title.setText(activityName);
+                    tv_venue.setText(eventVenue);
+                    tv_time.setText(formattedTime + " : " +formattedEndTime);
+                    tv_description.setText(description);
+                    tv_point.setText(points + " Points");
+                    if(attend.equals("1")){
+                        btnAttend.setVisibility(View.INVISIBLE);
+                    }
+
+
+
                 }
-            } catch (Exception err){
+            }catch (Exception err){
                 Toast.makeText(this, ""+err, Toast.LENGTH_SHORT).show();
             }
         }
 
-    }
-
-    public void HomeAnim(View view) {
-        if (view == findViewById(R.id.vhome_btn)) {
-            //back to home
-            startActivity(new Intent(this, HomeActivity.class));
-            //add animation
-            Animatoo.animateCard(this);
-            finish();
-        }
-    }
-
-    public void PortAnim(View view) {
-        if (view == findViewById(R.id.vport_btn)) {
-            //go to portfolio
-            startActivity(new Intent(this, MenuPortfolio.class));
-            //add animation
-            Animatoo.animateCard(this);
-            finish();
-        }
     }
 
     public void StickerAnim(View view) {
@@ -336,7 +518,7 @@ public class ScanSuccess extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("mobile.thomasianJourney.main.register.USER_CREDENTIALS", Context.MODE_PRIVATE);
         String studentId = sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENTS_ID, "");
 
-        OkHttpHandler okHttpHandler = new OkHttpHandler();
+        AttendedEvent.OkHttpHandler okHttpHandler = new AttendedEvent.OkHttpHandler();
 
         okHttpHandler.execute(stickerURL, id, studentId);
     }
@@ -493,7 +675,6 @@ public class ScanSuccess extends AppCompatActivity {
         }
 
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
