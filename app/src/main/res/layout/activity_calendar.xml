@@ -10,42 +10,24 @@
         android:id="@+id/calendarView"
         android:layout_width="0dp"
         android:layout_height="340dp"
-        android:layout_marginBottom="5dp"
         android:background="@color/colorPrimary"
         android:focusedMonthDateColor="@color/colorPrimaryDark"
         android:maxDate="12/31/2500"
         android:minDate="01/01/2000"
-        app:layout_constraintBottom_toTopOf="@+id/eventTable"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TableLayout
-        android:id="@+id/eventTable"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/colorPrimary"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/container1"
+        android:layout_width="411dp"
+        android:layout_height="390dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView">
+        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#FFFFFF" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="41dp" />
-    </TableLayout>
 </android.support.constraint.ConstraintLayout>
