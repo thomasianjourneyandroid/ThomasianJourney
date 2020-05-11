@@ -206,6 +206,7 @@
                     android:layout_margin="10dp"
                     android:clickable="true"
                     android:foreground="?android:attr/selectableItemBackground"
+                    android:onClick="CalendarAnim"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="6dp"
                     app:contentPadding="0dp">

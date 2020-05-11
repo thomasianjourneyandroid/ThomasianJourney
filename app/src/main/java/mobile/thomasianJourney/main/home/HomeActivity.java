@@ -39,6 +39,7 @@ import mobile.thomasianJourney.main.EventDetails;
 import mobile.thomasianJourney.main.MainActivity;
 import mobile.thomasianJourney.main.MenuPortfolio;
 import mobile.thomasianJourney.main.OkHttpHandler;
+import mobile.thomasianJourney.main.ViewCalendar;
 import mobile.thomasianJourney.main.interfaces.AsyncResponse;
 import mobile.thomasianJourney.main.register.async.StudentDetails;
 import mobile.thomasianJourney.main.register.utils.IntentExtrasAddresses;
@@ -565,9 +566,9 @@ public class HomeActivity extends AppCompatActivity {
     public void CalendarAnim(View view) {
         if (view == findViewById(R.id.calendarId)) {
             //open viewevents
-            //startActivity(new Intent(this, MenuPortfolio.class));
+            startActivity(new Intent(this, ViewCalendar.class));
             //add animation
-            //Animatoo.animateCard(this);
+            Animatoo.animateCard(this);
         }
     }
 /*

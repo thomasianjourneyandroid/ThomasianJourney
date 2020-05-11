@@ -102,8 +102,14 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
+            android:name="mobile.thomasianJourney.main.ViewCalendar"
+            android:label="View Calendar"
+            android:parentActivityName="mobile.thomasianJourney.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name="mobile.thomasianJourney.main.AttendedEvent"
-            android:label="Event Details"
+            android:label="Attended Event"
             android:parentActivityName="mobile.thomasianJourney.main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
