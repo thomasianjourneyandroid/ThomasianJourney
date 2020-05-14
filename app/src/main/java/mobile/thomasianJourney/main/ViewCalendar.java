@@ -61,21 +61,6 @@ public class ViewCalendar extends AppCompatActivity {
         okHttpHandler.execute(url, collegeid);
 
         calendarView = findViewById(R.id.calendarView);
-//        String date = "4/1/2020";
-//        String parts[] = date.split("/");
-//
-//        int day = Integer.parseInt(parts[1]);
-//        int month = Integer.parseInt(parts[0]);
-//        int year = Integer.parseInt(parts[2]);
-//
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.set(Calendar.YEAR, year);
-//        calendar.set(Calendar.MONTH, month);
-//        calendar.set(Calendar.DAY_OF_MONTH, day);
-//
-//        long milliTime = calendar.getTimeInMillis();
-//
-//        calendarView.setDate (milliTime, true, true);
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -159,21 +144,16 @@ public class ViewCalendar extends AppCompatActivity {
 
                 }
 
+                insertEvents();
                 Log.d("ViewCalendar", "List Item Check" + Arrays.deepToString(list.toArray()));
 
             }
         });
 
-        calendardata.add(new ItemData("New Test Event 2", "Medicine Auditorium", "01:00 - 11:00"));
-        calendardata.add(new ItemData("IICS Test Event", "Medicine Auditorium", "04:02 - 04:02"));
-        calendardata.add(new ItemData("IICS Future Event 2", "Medicine Auditorium", "11:20 - 12:00"));
+
         calendardata.add(new ItemData("Test Event for IICS TJ Version 3.0", "Medicine Auditorium", "10:26 - 11:26"));
         calendardata.add(new ItemData("Test Event for all TJ Version 3.0", "Medicine Auditorium", "10:28 - 10:28"));
         calendardata.add(new ItemData("2nd Test Event for IICS TJ Version 3.0", "Medicine Auditorium", "08:59 - 08:59"));
-//
-//        ItemAdapter adapter = new ItemAdapter(this, R.layout.row_calendar, calendardata);
-//        listevents = findViewById(R.id.listview);
-//        listevents.setAdapter(adapter);
 
         RecyclerView mRecyclerView = findViewById(R.id.listview);
         RecyclerViewAdapterCalendar adapter = new RecyclerViewAdapterCalendar(this, calendardata);
@@ -253,5 +233,20 @@ public class ViewCalendar extends AppCompatActivity {
         } else {
         }
 
+    }
+
+    private void insertEvents () {
+        calendardata.add(new ItemData("New Test Event 2", "Medicine Auditorium", "01:00 - 11:00"));
+        calendardata.add(new ItemData("IICS Test Event", "Medicine Auditorium", "04:02 - 04:02"));
+        calendardata.add(new ItemData("IICS Future Event 2", "Medicine Auditorium", "11:20 - 12:00"));
+        calendardata.add(new ItemData("Test Event for IICS TJ Version 3.0", "Medicine Auditorium", "10:26 - 11:26"));
+        calendardata.add(new ItemData("Test Event for all TJ Version 3.0", "Medicine Auditorium", "10:28 - 10:28"));
+        calendardata.add(new ItemData("2nd Test Event for IICS TJ Version 3.0", "Medicine Auditorium", "08:59 - 08:59"));
+
+        RecyclerView mRecyclerView = findViewById(R.id.listview);
+        RecyclerViewAdapterCalendar adapter = new RecyclerViewAdapterCalendar(this, calendardata);
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(adapter);
     }
 }
