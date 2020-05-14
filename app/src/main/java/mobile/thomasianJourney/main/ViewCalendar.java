@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -59,21 +61,21 @@ public class ViewCalendar extends AppCompatActivity {
         okHttpHandler.execute(url, collegeid);
 
         calendarView = findViewById(R.id.calendarView);
-        String date = "4/1/2020";
-        String parts[] = date.split("/");
-
-        int day = Integer.parseInt(parts[1]);
-        int month = Integer.parseInt(parts[0]);
-        int year = Integer.parseInt(parts[2]);
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR, year);
-        calendar.set(Calendar.MONTH, month);
-        calendar.set(Calendar.DAY_OF_MONTH, day);
-
-        long milliTime = calendar.getTimeInMillis();
-
-        calendarView.setDate (milliTime, true, true);
+//        String date = "4/1/2020";
+//        String parts[] = date.split("/");
+//
+//        int day = Integer.parseInt(parts[1]);
+//        int month = Integer.parseInt(parts[0]);
+//        int year = Integer.parseInt(parts[2]);
+//
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.set(Calendar.YEAR, year);
+//        calendar.set(Calendar.MONTH, month);
+//        calendar.set(Calendar.DAY_OF_MONTH, day);
+//
+//        long milliTime = calendar.getTimeInMillis();
+//
+//        calendarView.setDate (milliTime, true, true);
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -99,7 +101,7 @@ public class ViewCalendar extends AppCompatActivity {
                     daystring = "" + dayOfMonth;
                 }
 
-//                date = year + "-" + monthstring + "-" + daystring;
+                date = year + "-" + monthstring + "-" + daystring;
 //                Log.d("ViewCalendar", "Check: " + date);
 ////                Log.d("ViewCalendar", "Check Json Array" + dataArray);
 //
@@ -108,7 +110,7 @@ public class ViewCalendar extends AppCompatActivity {
 ////                    calendardata.add(new ItemData("New Test Event 2", "Medicine Auditorium", "01 - 11:00"));
 //                }
 
-                /*ArrayList<String[]> list = new ArrayList<>();
+                ArrayList<String[]> list = new ArrayList<>();
 
                 list.clear();
 
@@ -157,39 +159,8 @@ public class ViewCalendar extends AppCompatActivity {
 
                 }
 
-//                Iterator i = list.iterator();
-//                Log.d("ViewCalendar", "The ArrayList elements are:");
-//                while (i.hasNext()) {
-//                    Log.d("ViewCalendar", ""+ i.next());
-//                }
+                Log.d("ViewCalendar", "List Item Check" + Arrays.deepToString(list.toArray()));
 
-                // Convert ArrayList to Array
-//                String[] eventslist = new String[list.size()];
-//                eventslist = list.toArray(eventslist);
-//                String[] eventslist = list.toArray();
-//                String[] eventslist = list.toArray(new String[0]);
-
-                // Print the array
-//                for (String s : eventslist) {
-//                    Log.d("ViewCalendar", "List Item Check: " + s);
-//                }
-//                for (int row = 0; row<eventslist.length; row++) {
-//
-//                    for (int column = 0; column < eventslist[row].length(); column++) {
-//                        Log.d("ViewCalendar", "List Item Check" + eventslist.toString());
-//                    }
-//                }
-
-//                for (String[] string : list) {
-//                    Log.d("ViewCalendar", "List Item Check" + string);
-//                }
-
-//                Log.d("ViewCalendar", "List Item Check" + Arrays.toString(list.toArray()));
-
-                // for loop
-//                for (Iterator<String[]> iterator = list.iterator(); iterator.hasNext();) {
-//                    Log.d("ViewCalendar", "List Item Check value= " + iterator.next());
-//                }*/
             }
         });
 
@@ -199,11 +170,16 @@ public class ViewCalendar extends AppCompatActivity {
         calendardata.add(new ItemData("Test Event for IICS TJ Version 3.0", "Medicine Auditorium", "10:26 - 11:26"));
         calendardata.add(new ItemData("Test Event for all TJ Version 3.0", "Medicine Auditorium", "10:28 - 10:28"));
         calendardata.add(new ItemData("2nd Test Event for IICS TJ Version 3.0", "Medicine Auditorium", "08:59 - 08:59"));
+//
+//        ItemAdapter adapter = new ItemAdapter(this, R.layout.row_calendar, calendardata);
+//        listevents = findViewById(R.id.listview);
+//        listevents.setAdapter(adapter);
 
-        ItemAdapter adapter = new ItemAdapter(this, R.layout.row_calendar, calendardata);
-        listevents = findViewById(R.id.listview);
-        listevents.setAdapter(adapter);
+        RecyclerView mRecyclerView = findViewById(R.id.listview);
+        RecyclerViewAdapterCalendar adapter = new RecyclerViewAdapterCalendar(this, calendardata);
 
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(adapter);
     }
 
     public class OkHttpHandler extends AsyncTask<String, Void, String> {

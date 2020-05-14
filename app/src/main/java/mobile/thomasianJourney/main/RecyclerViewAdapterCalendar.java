@@ -30,7 +30,12 @@ public class RecyclerViewAdapterCalendar extends RecyclerView.Adapter<RecyclerVi
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return null;
+        View v;
+
+        v = LayoutInflater.from(mContext).inflate(R.layout.row_calendar, viewGroup, false);
+        final RecyclerViewAdapterCalendar.MyViewHolder vHolder = new RecyclerViewAdapterCalendar.MyViewHolder(v);
+
+        return vHolder;
     }
 
     @Override
@@ -54,6 +59,7 @@ public class RecyclerViewAdapterCalendar extends RecyclerView.Adapter<RecyclerVi
 
         MyViewHolder(View itemView){
             super(itemView);
+            item_contact = itemView.findViewById(R.id.item_contact);
             title = itemView.findViewById(R.id.event_title);
             venue = itemView.findViewById(R.id.event_venue);
             time = itemView.findViewById(R.id.event_time);

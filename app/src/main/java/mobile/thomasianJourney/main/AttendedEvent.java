@@ -83,7 +83,7 @@ public class AttendedEvent extends AppCompatActivity {
     public String stickerURL = "https://thomasianjourney.website/Register/printSticker";
     ProgressDialog dialog;
 
-    public String activityName, eventVenue, eventDate, description, eventendDate, points, attend, startTime, endTime, splittedTime, splittedEndTime, formattedTime, formattedEndTime, date, year, month, day, refereceNo, printStickerData, printSticker;
+    public String activityName, eventVenue, eventDate, description, eventendDate, points, attend, startTime, endTime, splittedTime, splittedEndTime, formattedTime, formattedEndTime, date, year, month, day, referenceNo, printStickerData, printSticker;
 
     public static final int STORAGE_CODE = 1000;
 
@@ -540,7 +540,7 @@ public class AttendedEvent extends AppCompatActivity {
                 String eventId = dataObject.get("eventId").getAsString();
                 String yearLevel = dataObject.get("yearLevel").getAsString();
                 printSticker = dataObject.get("printSticker").getAsString();
-                refereceNo = dataObject.get("referenceNo").getAsString();
+                referenceNo = dataObject.get("referenceNo").getAsString();
 
                 if (printSticker.equals("0")) {
                     // DOWNLOAD PDF
@@ -560,7 +560,7 @@ public class AttendedEvent extends AppCompatActivity {
                         mDoc.addTitle(activityName);
 
                         Font titlefont = new Font(Font.FontFamily.HELVETICA, 18f, Font.BOLD, BaseColor.BLACK);
-                        Chunk titlefontchunk = new Chunk("Event Title Here", titlefont);
+                        Chunk titlefontchunk = new Chunk(activityName, titlefont);
                         Paragraph titlefontparagraph = new Paragraph(titlefontchunk);
                         titlefontparagraph.setAlignment(Element.ALIGN_CENTER);
                         mDoc.add(titlefontparagraph);
@@ -573,8 +573,8 @@ public class AttendedEvent extends AppCompatActivity {
                         byte[] byteArray = stream.toByteArray();
                         try {
                             img = Image.getInstance(byteArray);
+                            img.scaleAbsolute(113f, 151f);
 //                img.scalePercent(7f);
-                            img.scaleAbsolute(54f, 76f);
                             img.setAlignment(Image.MIDDLE);
                         } catch (BadElementException e) {
                             e.printStackTrace();
@@ -587,36 +587,37 @@ public class AttendedEvent extends AppCompatActivity {
 
                         PdfReader reader = new PdfReader(mFilePath);
                         PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(Environment.getExternalStorageDirectory().getAbsolutePath() + "/"+activityName+" Sticker.pdf"));
-                        Font f = new Font(Font.FontFamily.HELVETICA, 1.5f, Font.NORMAL, BaseColor.BLACK);
+                        Font f = new Font(Font.FontFamily.HELVETICA, 3f, Font.NORMAL, BaseColor.BLACK);
+                        Font f2 = new Font(Font.FontFamily.HELVETICA, 2.5f, Font.NORMAL, BaseColor.BLACK);
 
                         // EVENT ID
                         PdfContentByte cb = stamper.getOverContent(1);
                         ColumnText ct = new ColumnText(cb);
-                        ct.setSimpleColumn(285f, 742.5f, 485f, 762.5f);
-                        Paragraph pz = new Paragraph(new Phrase(20, "242", f));
+                        ct.setSimpleColumn(273f, 719.5f, 473f, 739.5f);
+                        Paragraph pz = new Paragraph(new Phrase(20, eventId, f));
                         ct.addElement(pz);
                         ct.go();
 
                         // EVENT NAME
-                        ct.setSimpleColumn(288f, 737.75f, 488, 757.75f);
+                        ct.setSimpleColumn(282f, 710.75f, 482, 730.75f);
                         pz = new Paragraph(new Phrase(20, activityName, f));
                         ct.addElement(pz);
                         ct.go();
 
                         // EVENT VENUE
-                        ct.setSimpleColumn(282.5f, 733f, 482.5f, 753f);
+                        ct.setSimpleColumn(267f, 701.5f, 467f, 721.5f);
                         pz = new Paragraph(new Phrase(20, eventVenue, f));
                         ct.addElement(pz);
                         ct.go();
 
                         // EVENT DATE
-                        ct.setSimpleColumn(280.5f, 728.5f, 480.5f, 748.5f);
+                        ct.setSimpleColumn(262f, 692.25f, 462f, 712.25f);
                         pz = new Paragraph(new Phrase(20, month + " " + day + ", " + year, f));
                         ct.addElement(pz);
                         ct.go();
 
                         // EVENT TIME
-                        ct.setSimpleColumn(281f, 724f, 481f, 744f);
+                        ct.setSimpleColumn(261f, 683.25f, 461f, 703.25f);
                         pz = new Paragraph(new Phrase(20, formattedTime + " - " + formattedEndTime, f));
                         ct.addElement(pz);
                         ct.go();
@@ -624,22 +625,47 @@ public class AttendedEvent extends AppCompatActivity {
                         SharedPreferences sharedPreferences = getSharedPreferences("mobile.thomasianJourney.main.register.USER_CREDENTIALS", Context.MODE_PRIVATE);
                         String studentnumber = sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENT_NO, "");
                         String studentname = sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENT_NAME, "");
+                        String studentCollege = sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENT_COLLEGE_ID, "");
+
+                        switch (studentCollege) {
+                            case "1":
+                                studentCollege = "Commerce";
+                                break;
+                            case "2":
+                                studentCollege = "IICS";
+                                break;
+                            case "3":
+                                studentCollege = "Science";
+                                break;
+                            case "7":
+                                studentCollege = "Graduate School";
+                                break;
+                            default:
+                                studentCollege = "";
+                                break;
+                        }
 
                         // STUDENT NO.
-                        ct.setSimpleColumn(290, 711f, 490f, 731f);
+                        ct.setSimpleColumn(286, 657.25f, 486f, 677.25f);
                         pz = new Paragraph(new Phrase(20, studentnumber, f));
                         ct.addElement(pz);
                         ct.go();
 
                         // STUDENT NAME
-                        ct.setSimpleColumn(282f, 706.25f, 482f, 726.25f);
+                        ct.setSimpleColumn(264f, 648.25f, 464f, 668.25f);
                         pz = new Paragraph(new Phrase(20, studentname, f));
                         ct.addElement(pz);
                         ct.go();
 
+                        // STUDENT COLLEGE
+                        ct.setSimpleColumn(330f, 639.25f, 530f, 659.25f);
+                        pz = new Paragraph(new Phrase(20, studentCollege, f2));
+                        ct.addElement(pz);
+                        ct.go();
+
                         // REFERENCE NO.
-                        ct.setSimpleColumn(296f, 695.75f, 496f, 715.75f);
-                        pz = new Paragraph(new Phrase(20, refereceNo, f));
+                        ct.setSimpleColumn(292f, 624.75f, 492f, 644.75f);
+                        pz = new Paragraph(new Phrase(20, referenceNo, f));
                         ct.addElement(pz);
                         ct.go();
 
