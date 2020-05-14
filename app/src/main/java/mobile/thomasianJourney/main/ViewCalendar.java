@@ -21,9 +21,13 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -64,6 +68,8 @@ public class ViewCalendar extends AppCompatActivity {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                calendardata.clear();
+
                 String monthstring = "";
                 String daystring = "";
 
@@ -86,13 +92,6 @@ public class ViewCalendar extends AppCompatActivity {
                 }
 
                 date = year + "-" + monthstring + "-" + daystring;
-//                Log.d("ViewCalendar", "Check: " + date);
-////                Log.d("ViewCalendar", "Check Json Array" + dataArray);
-//
-//                if (date.contains("2020-05-01")) {
-//                    Log.d("ViewCalendar", "Check May 1");
-////                    calendardata.add(new ItemData("New Test Event 2", "Medicine Auditorium", "01 - 11:00"));
-//                }
 
                 list.clear();
 
@@ -133,23 +132,28 @@ public class ViewCalendar extends AppCompatActivity {
 
                             list.add(rowArray);
                             break;
-//                            list.add(rowArray);
-
                         }
 
                     }
 
                 }
 
-                insertEvents();
-                Log.d("ViewCalendar", "List Item Check" + Arrays.deepToString(list.toArray()));
+//                Log.d("ViewCalendar", "List Item Check" + Arrays.deepToString(list.toArray()));
 
-                String[] eventsarray = list.toArray(new String[0]);
+                String[][] eventsarray = list.toArray(new String[list.size()][6]);
+
+//                Log.d("ViewCalendar", "String Array Check" + eventsarray.length);
+
+                try {
+                    insertEvents(eventsarray);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                Arrays.fill(eventsarray, null);
 
             }
         });
-
-        // STARTUP DATA
 
 //        calendardata.add(new ItemData("Test Event for IICS TJ Version 3.0", "Medicine Auditorium", "10:26 - 11:26"));
 //        calendardata.add(new ItemData("Test Event for all TJ Version 3.0", "Medicine Auditorium", "10:28 - 10:28"));
@@ -224,6 +228,69 @@ public class ViewCalendar extends AppCompatActivity {
                     dataArray = jsonObject.get("data").getAsJsonArray();
                 }
 
+                // STARTUP DATA
+                Date date = new Date();
+                SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
+
+                list.clear();
+
+                for (int i = 0; i < dataArray.size(); i++) {
+                    String[] rowArray = new String[6];
+                    JsonArray stringArray = dataArray.get(i).getAsJsonArray();
+//                    Log.d("ViewCalendar", "Check String Array" + stringArray);
+
+                    Arrays.fill(rowArray, null);
+                    for (int j = 0; j < stringArray.size(); j++) {
+//                        String data = stringArray.get(j).toString();
+
+//                        Log.d("ViewCalendar", "Data Check: " + data);
+
+                        String eventid = stringArray.get(0).toString();
+                        String eventname = stringArray.get(1).toString();
+                        String eventvenue = stringArray.get(2).toString();
+                        String eventstart = stringArray.get(3).toString();
+                        String eventend = stringArray.get(4).toString();
+                        String eventstatus = stringArray.get(5).toString();
+
+//                        Log.d("ViewCalendar", "Checking Event Start." + eventstart);
+
+                        if (eventstart.contains(formatter.format(date))) {
+//                            Log.d("ViewCalendar", "Place success stuff here." + eventstart);
+                            rowArray[0] = eventid;
+                            rowArray[1] = eventname;
+                            rowArray[2] = eventvenue;
+                            rowArray[3] = eventstart;
+                            rowArray[4] = eventend;
+                            rowArray[5] = eventstatus;
+
+//                            Log.d("ViewCalendar", "rowArray Check " + rowArray);
+
+//                            for (int k = 0; k < rowArray.length; k++) {
+//                                Log.d("ViewCalendar", "rowArray Check " + rowArray[k]);
+//                            }
+
+                            list.add(rowArray);
+                            break;
+                        }
+
+                    }
+
+                }
+
+//                Log.d("ViewCalendar", "List Item Check" + Arrays.deepToString(list.toArray()));
+
+                String[][] eventsarray = list.toArray(new String[list.size()][6]);
+
+//                Log.d("ViewCalendar", "String Array Check" + eventsarray.length);
+
+                try {
+                    insertEvents(eventsarray);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                Arrays.fill(eventsarray, null);
+
             } catch (Exception err) {
 //                mRecyclerView.setVisibility(View.GONE);
 //                empty = getActivity().findViewById(R.id.empty);
@@ -235,21 +302,30 @@ public class ViewCalendar extends AppCompatActivity {
 
     }
 
-    private void insertEvents () {
-        calendardata.add(new ItemData("New Test Event 2", "Medicine Auditorium", "01:00 - 11:00"));
-        calendardata.add(new ItemData("IICS Test Event", "Medicine Auditorium", "04:02 - 04:02"));
-        calendardata.add(new ItemData("IICS Future Event 2", "Medicine Auditorium", "11:20 - 12:00"));
-        calendardata.add(new ItemData("Test Event for IICS TJ Version 3.0", "Medicine Auditorium", "10:26 - 11:26"));
-        calendardata.add(new ItemData("Test Event for all TJ Version 3.0", "Medicine Auditorium", "10:28 - 10:28"));
-        calendardata.add(new ItemData("2nd Test Event for IICS TJ Version 3.0", "Medicine Auditorium", "08:59 - 08:59"));
+    private void insertEvents (String[][] eventsarray) throws ParseException {
+        for (int row = 0; row < eventsarray.length; row++) {
+            for (int column = 0; column < eventsarray[row].length; column++) {
+                String eventid = eventsarray[row][0].replaceAll("^\"|\"$", "");;
+                String eventname = eventsarray[row][1].replaceAll("^\"|\"$", "");;
+                String eventvenue = eventsarray[row][2].replaceAll("^\"|\"$", "");;
+                String eventstart = eventsarray[row][3].replaceAll("^\"|\"$", "");;
+                String eventend = eventsarray[row][4].replaceAll("^\"|\"$", "");;
+                String eventstatus = eventsarray[row][5].replaceAll("^\"|\"$", "");;
 
-//        int vertexCount = list.size();
-//        for (int i = 0; i < vertexCount; i++) {
-//            int edgeCount = list.get(i).length;
-//            for (int j = 0; j < edgeCount; j++) {
-//                Log.d("ViewCalendar", "For Loop Checking: " + list.get(i).get(j));
-//            }
-//        }
+                String startTime = eventstart.split(" ")[1];
+                String endTime = eventend.split(" ")[1];
+                String splittedTime = startTime.split(":")[0] + ":" + startTime.split(":")[1];
+                String splittedEndTime = endTime.split(":")[0] + ":" + endTime.split(":")[1];
+                DateFormat dfTime = new SimpleDateFormat("hh:mm a");
+                SimpleDateFormat target = new SimpleDateFormat("h:mm a");
+                SimpleDateFormat source = new SimpleDateFormat("HH:mm");
+                String formattedTime = target.format(source.parse(splittedTime));
+                String formattedEndTime = target.format(source.parse(splittedEndTime));
+
+                calendardata.add(new ItemData(eventname + "", eventvenue + "", formattedTime + " - " + formattedEndTime));
+                break;
+            }
+        }
 
         RecyclerView mRecyclerView = findViewById(R.id.listview);
         RecyclerViewAdapterCalendar adapter = new RecyclerViewAdapterCalendar(this, calendardata);
