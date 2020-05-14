@@ -45,8 +45,7 @@ public class ViewCalendar extends AppCompatActivity {
     String date = "";
     JsonArray dataArray;
     ArrayList<ItemData> calendardata = new ArrayList<>();
-    ListView listevents;
-
+    ArrayList<String[]> list = new ArrayList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -94,8 +93,6 @@ public class ViewCalendar extends AppCompatActivity {
 //                    Log.d("ViewCalendar", "Check May 1");
 ////                    calendardata.add(new ItemData("New Test Event 2", "Medicine Auditorium", "01 - 11:00"));
 //                }
-
-                ArrayList<String[]> list = new ArrayList<>();
 
                 list.clear();
 
@@ -147,19 +144,22 @@ public class ViewCalendar extends AppCompatActivity {
                 insertEvents();
                 Log.d("ViewCalendar", "List Item Check" + Arrays.deepToString(list.toArray()));
 
+                String[] eventsarray = list.toArray(new String[0]);
+
             }
         });
 
+        // STARTUP DATA
 
-        calendardata.add(new ItemData("Test Event for IICS TJ Version 3.0", "Medicine Auditorium", "10:26 - 11:26"));
-        calendardata.add(new ItemData("Test Event for all TJ Version 3.0", "Medicine Auditorium", "10:28 - 10:28"));
-        calendardata.add(new ItemData("2nd Test Event for IICS TJ Version 3.0", "Medicine Auditorium", "08:59 - 08:59"));
-
-        RecyclerView mRecyclerView = findViewById(R.id.listview);
-        RecyclerViewAdapterCalendar adapter = new RecyclerViewAdapterCalendar(this, calendardata);
-
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(adapter);
+//        calendardata.add(new ItemData("Test Event for IICS TJ Version 3.0", "Medicine Auditorium", "10:26 - 11:26"));
+//        calendardata.add(new ItemData("Test Event for all TJ Version 3.0", "Medicine Auditorium", "10:28 - 10:28"));
+//        calendardata.add(new ItemData("2nd Test Event for IICS TJ Version 3.0", "Medicine Auditorium", "08:59 - 08:59"));
+//
+//        RecyclerView mRecyclerView = findViewById(R.id.listview);
+//        RecyclerViewAdapterCalendar adapter = new RecyclerViewAdapterCalendar(this, calendardata);
+//
+//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        mRecyclerView.setAdapter(adapter);
     }
 
     public class OkHttpHandler extends AsyncTask<String, Void, String> {
@@ -242,6 +242,14 @@ public class ViewCalendar extends AppCompatActivity {
         calendardata.add(new ItemData("Test Event for IICS TJ Version 3.0", "Medicine Auditorium", "10:26 - 11:26"));
         calendardata.add(new ItemData("Test Event for all TJ Version 3.0", "Medicine Auditorium", "10:28 - 10:28"));
         calendardata.add(new ItemData("2nd Test Event for IICS TJ Version 3.0", "Medicine Auditorium", "08:59 - 08:59"));
+
+//        int vertexCount = list.size();
+//        for (int i = 0; i < vertexCount; i++) {
+//            int edgeCount = list.get(i).length;
+//            for (int j = 0; j < edgeCount; j++) {
+//                Log.d("ViewCalendar", "For Loop Checking: " + list.get(i).get(j));
+//            }
+//        }
 
         RecyclerView mRecyclerView = findViewById(R.id.listview);
         RecyclerViewAdapterCalendar adapter = new RecyclerViewAdapterCalendar(this, calendardata);

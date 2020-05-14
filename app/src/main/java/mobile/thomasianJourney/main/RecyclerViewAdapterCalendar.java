@@ -52,14 +52,12 @@ public class RecyclerViewAdapterCalendar extends RecyclerView.Adapter<RecyclerVi
 
     static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        private LinearLayout item_contact;
         private TextView title;
         private TextView venue;
         private TextView time;
 
         MyViewHolder(View itemView){
             super(itemView);
-            item_contact = itemView.findViewById(R.id.item_contact);
             title = itemView.findViewById(R.id.event_title);
             venue = itemView.findViewById(R.id.event_venue);
             time = itemView.findViewById(R.id.event_time);
