@@ -33,5 +33,11 @@
             android:fontFamily="@font/poppinsregular"
             android:text="Time"
             android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/textLine"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#8E8989" />
     </LinearLayout>
 </ScrollView>
