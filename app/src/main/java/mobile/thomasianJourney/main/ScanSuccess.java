@@ -132,6 +132,7 @@ public class ScanSuccess extends AppCompatActivity {
                         .setType(MultipartBody.FORM)
                         .addFormDataPart("activityId", params[1])
                         .addFormDataPart("accountId", params[2])
+                        .addFormDataPart("studentno", params[3])
                         .build();
 
                 Request.Builder builder = new Request.Builder();
@@ -335,10 +336,11 @@ public class ScanSuccess extends AppCompatActivity {
         String id = i.getExtras().getString("activityId");
         SharedPreferences sharedPreferences = getSharedPreferences("mobile.thomasianJourney.main.register.USER_CREDENTIALS", Context.MODE_PRIVATE);
         String studentId = sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENTS_ID, "");
+        String studentno = sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_MOBILE_NUMBER, "");
 
         OkHttpHandler okHttpHandler = new OkHttpHandler();
 
-        okHttpHandler.execute(stickerURL, id, studentId);
+        okHttpHandler.execute(stickerURL, id, studentId, studentno);
     }
 
     public void printSticker(String s) {
@@ -407,6 +409,7 @@ public class ScanSuccess extends AppCompatActivity {
                         PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(Environment.getExternalStorageDirectory().getAbsolutePath() + "/"+activityName+" Sticker.pdf"));
                         Font f = new Font(Font.FontFamily.HELVETICA, 3f, Font.NORMAL, BaseColor.BLACK);
                         Font f2 = new Font(Font.FontFamily.HELVETICA, 2.5f, Font.NORMAL, BaseColor.BLACK);
+                        Font f3 = new Font(Font.FontFamily.HELVETICA, 6f, Font.NORMAL, BaseColor.BLACK);
 
                         // EVENT ID
                         PdfContentByte cb = stamper.getOverContent(1);
@@ -482,8 +485,8 @@ public class ScanSuccess extends AppCompatActivity {
                         ct.go();
 
                         // REFERENCE NO.
-                        ct.setSimpleColumn(292f, 624.75f, 492f, 644.75f);
-                        pz = new Paragraph(new Phrase(20, referenceNo, f));
+                        ct.setSimpleColumn(292f, 623.6f, 492f, 643.6f);
+                        pz = new Paragraph(new Phrase(20, referenceNo, f3));
                         ct.addElement(pz);
                         ct.go();
 

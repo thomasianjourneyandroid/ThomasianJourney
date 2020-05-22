@@ -226,42 +226,41 @@ public class ViewCalendar extends AppCompatActivity {
 
                 if (jsonObject.has("data")) {
                     dataArray = jsonObject.get("data").getAsJsonArray();
-                }
 
-                // STARTUP DATA
-                Date date = new Date();
-                SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
+                    // STARTUP DATA
+                    Date date = new Date();
+                    SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
 
-                list.clear();
+                    list.clear();
 
-                for (int i = 0; i < dataArray.size(); i++) {
-                    String[] rowArray = new String[6];
-                    JsonArray stringArray = dataArray.get(i).getAsJsonArray();
+                    for (int i = 0; i < dataArray.size(); i++) {
+                        String[] rowArray = new String[6];
+                        JsonArray stringArray = dataArray.get(i).getAsJsonArray();
 //                    Log.d("ViewCalendar", "Check String Array" + stringArray);
 
-                    Arrays.fill(rowArray, null);
-                    for (int j = 0; j < stringArray.size(); j++) {
+                        Arrays.fill(rowArray, null);
+                        for (int j = 0; j < stringArray.size(); j++) {
 //                        String data = stringArray.get(j).toString();
 
 //                        Log.d("ViewCalendar", "Data Check: " + data);
 
-                        String eventid = stringArray.get(0).toString();
-                        String eventname = stringArray.get(1).toString();
-                        String eventvenue = stringArray.get(2).toString();
-                        String eventstart = stringArray.get(3).toString();
-                        String eventend = stringArray.get(4).toString();
-                        String eventstatus = stringArray.get(5).toString();
+                            String eventid = stringArray.get(0).toString();
+                            String eventname = stringArray.get(1).toString();
+                            String eventvenue = stringArray.get(2).toString();
+                            String eventstart = stringArray.get(3).toString();
+                            String eventend = stringArray.get(4).toString();
+                            String eventstatus = stringArray.get(5).toString();
 
 //                        Log.d("ViewCalendar", "Checking Event Start." + eventstart);
 
-                        if (eventstart.contains(formatter.format(date))) {
+                            if (eventstart.contains(formatter.format(date))) {
 //                            Log.d("ViewCalendar", "Place success stuff here." + eventstart);
-                            rowArray[0] = eventid;
-                            rowArray[1] = eventname;
-                            rowArray[2] = eventvenue;
-                            rowArray[3] = eventstart;
-                            rowArray[4] = eventend;
-                            rowArray[5] = eventstatus;
+                                rowArray[0] = eventid;
+                                rowArray[1] = eventname;
+                                rowArray[2] = eventvenue;
+                                rowArray[3] = eventstart;
+                                rowArray[4] = eventend;
+                                rowArray[5] = eventstatus;
 
 //                            Log.d("ViewCalendar", "rowArray Check " + rowArray);
 
@@ -269,27 +268,28 @@ public class ViewCalendar extends AppCompatActivity {
 //                                Log.d("ViewCalendar", "rowArray Check " + rowArray[k]);
 //                            }
 
-                            list.add(rowArray);
-                            break;
+                                list.add(rowArray);
+                                break;
+                            }
+
                         }
 
                     }
 
-                }
-
 //                Log.d("ViewCalendar", "List Item Check" + Arrays.deepToString(list.toArray()));
 
-                String[][] eventsarray = list.toArray(new String[list.size()][6]);
+                    String[][] eventsarray = list.toArray(new String[list.size()][6]);
 
 //                Log.d("ViewCalendar", "String Array Check" + eventsarray.length);
 
-                try {
-                    insertEvents(eventsarray);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                    try {
+                        insertEvents(eventsarray);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
 
-                Arrays.fill(eventsarray, null);
+                    Arrays.fill(eventsarray, null);
+                }
 
             } catch (Exception err) {
 //                mRecyclerView.setVisibility(View.GONE);

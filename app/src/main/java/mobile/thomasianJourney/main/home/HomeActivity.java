@@ -298,15 +298,17 @@ public class HomeActivity extends AppCompatActivity {
                     JsonObject dataObject = jsonObject.get("data").getAsJsonObject();
 
                     if (dataObject != null) {
-                        if (dataObject.has("studregEmail") && dataObject.has("studregmobileNum") && dataObject.has("studentsId")) {
+                        if (dataObject.has("studregEmail") && dataObject.has("studregmobileNum") && dataObject.has("studentsId") && dataObject.has("yearlevelId")) {
                             String emailAddress = dataObject.get("studregEmail").getAsString();
                             String mobileNumber = dataObject.get("studregmobileNum").getAsString();
                             //int studentsId = dataObject.get("studNumber").getAsInt();
                             String studentNumber = dataObject.get("studNumber").getAsString();
+                            String studentyear = dataObject.get("yearlevelId").getAsString();
 
                             SharedPreferences sharedPreferences = getSharedPreferences("mobile.thomasianJourney.main.register.USER_CREDENTIALS", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putString(IntentExtrasAddresses.INTENT_EXTRA_STUDENT_NO, studentNumber);
+                            editor.putString(IntentExtrasAddresses.INTENT_EXTRA_STUDENT_YEAR_LEVEL_ID, studentyear);
                             editor.apply();
 
                             int studPoints = dataObject.get("studPoints").getAsInt();
