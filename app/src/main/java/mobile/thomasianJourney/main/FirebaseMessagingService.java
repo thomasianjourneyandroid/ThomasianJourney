@@ -21,8 +21,6 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         showNotification(remoteMessage.getData().get("heading"),remoteMessage.getData().get("message"));
         Intent intent = new Intent("mobile.thomasianJourney.main_FCM-MESSAGE");
 
-        //intent.putExtra("message"," message = "+remoteMessage.getData().get("message"));
-
         LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(this);
         localBroadcastManager.sendBroadcast(intent);
 

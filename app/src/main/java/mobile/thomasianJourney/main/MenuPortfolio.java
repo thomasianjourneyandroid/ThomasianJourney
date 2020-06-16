@@ -69,10 +69,6 @@ public class MenuPortfolio extends AppCompatActivity {
                 ".thomasianJourney.main.register.USER_CREDENTIALS", Context.MODE_PRIVATE);
 
         if (sharedPreferences != null) {
-
-//            String collegeId =
-//                    sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENT_COLLEGE_ID, "");
-
             final String yearLevel =
                     sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENT_YEAR_LEVEL_ID, "");
             OkHttpHandler okHttpHandler = new OkHttpHandler();
@@ -169,21 +165,6 @@ public class MenuPortfolio extends AppCompatActivity {
     public void ShowDialogHelp() {
         dialog_help.setContentView(R.layout.dialog_help);
         closeDialogHelp = (ImageView) dialog_help.findViewById(R.id.closeDialogHelp);
-//        title_text1 = (TextView) dialog_help.findViewById(R.id.title_text1);
-//        title_text2 = (TextView) dialog_help.findViewById(R.id.title_text2);
-//        title_text3 = (TextView) dialog_help.findViewById(R.id.title_text3);
-//        title_text4 = (TextView) dialog_help.findViewById(R.id.title_text4);
-//        title_text5 = (TextView) dialog_help.findViewById(R.id.title_text5);
-//        title_text6 = (TextView) dialog_help.findViewById(R.id.title_text6);
-//        content_text1 = (TextView) dialog_help.findViewById(R.id.content_text1);
-//        content_text2 = (TextView) dialog_help.findViewById(R.id.content_text2);
-//        content_text3 = (TextView) dialog_help.findViewById(R.id.content_text3);
-//        content_text4 = (TextView) dialog_help.findViewById(R.id.content_text4);
-//        content_text5 = (TextView) dialog_help.findViewById(R.id.content_text5);
-//        content_text6 = (TextView) dialog_help.findViewById(R.id.content_text6);
-//        txthelp = (TextView) dialog_help.findViewById(R.id.txthelp);
-//        scrollhelp = (NestedScrollView) dialog_help.findViewById(R.id.scrollhelp);
-//        layouthelp = (LinearLayout) dialog_help.findViewById(R.id.layouthelp);
         txtContent1 = (TextView) dialog_help.findViewById(R.id.title_text1);
         TextView txtTitle1 = (TextView) dialog_help.findViewById(R.id.content_text1);
         txtContent1.setVisibility(View.GONE);
@@ -379,13 +360,8 @@ public class MenuPortfolio extends AppCompatActivity {
         @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         protected void onPostExecute(String s) {
-
-//            if(dialog.isShowing()){
             dialog.dismiss();
-//            }
-//            textView.setText(s);
             insertList(s);
-//            Toast.makeText(getContext(), ""+s, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -397,11 +373,9 @@ public class MenuPortfolio extends AppCompatActivity {
                 Gson gson = new Gson();
 
                 JsonObject jsonObject = gson.fromJson(s, JsonObject.class);
-//                Log.d("MenuPortfolioData", "Data Array: " + jsonObject);
                 if  (jsonObject.has("data")) {
 
                     JsonArray dataArray = jsonObject.get("data").getAsJsonArray();
-//                    Log.d("MenuPortfolioData", "Data Array: " + dataArray);
                     for (int i = 0 ; i < dataArray.size() ; i++){
                         String[] temp = new String[4];
                         JsonArray stringArray = dataArray.get(i).getAsJsonArray();
@@ -421,23 +395,14 @@ public class MenuPortfolio extends AppCompatActivity {
                             year4 = temp;
                         }
 
-                        //Log.d("MenuPortfolioData", stringArray + " ");
                     }
-
-//                    Log.d("MenuPortfolioData", "Year 1 Data: " + year1);
-//                    Log.d("MenuPortfolioData", "Year 2 Data: " + year2);
-//                    Log.d("MenuPortfolioData", "Year 3 Data: " + year3);
-//                    Log.d("MenuPortfolioData", "Year 4 Data: " + year4);
 
                 }else{
 
                 }
 
             }catch(Exception err){
-//                mRecyclerView.setVisibility(View.GONE);
-//                empty = getActivity().findViewById(R.id.empty);
-//                empty.setVisibility(View.VISIBLE);
-//                Toast.makeText(this, year1.length+"HELLO", Toast.LENGTH_SHORT).show();
+
             }
         }else{
         }

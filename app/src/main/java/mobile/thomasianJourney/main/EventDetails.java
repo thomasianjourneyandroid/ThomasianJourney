@@ -81,42 +81,16 @@ public class EventDetails extends AppCompatActivity {
 
         Intent i = getIntent();
         String id = i.getExtras().getString("activityId");
-        //String accountId = "1";
         okHttpHandler2.execute(eventUrl, id, studentId + "");
-
 
         btnAttend = (Button) findViewById(R.id.vsticker_btn);
 
-//        attend.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openVerifyLoginCred();
-//            }
-//        });
-        /*img_help = (ImageView) findViewById(R.id.img_help);
-        img_help.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialogHelp();
-            }
-        });*/
-
         dialog_help = new Dialog(this);
-
-
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setElevation(0);
 
-
     }
-
-
-//    public void openVerifyLoginCred() {
-//        Intent intent = new Intent(this,VerifyLoginCred.class);
-//        startActivity(intent);
-//        finish();
-//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -145,21 +119,6 @@ public class EventDetails extends AppCompatActivity {
     public void ShowDialogHelp() {
         dialog_help.setContentView(R.layout.dialog_help);
         closeDialogHelp = (ImageView) dialog_help.findViewById(R.id.closeDialogHelp);
-//        title_text1 = (TextView) dialog_help.findViewById(R.id.title_text1);
-//        title_text2 = (TextView) dialog_help.findViewById(R.id.title_text2);
-//        title_text3 = (TextView) dialog_help.findViewById(R.id.title_text3);
-//        title_text4 = (TextView) dialog_help.findViewById(R.id.title_text4);
-//        title_text5 = (TextView) dialog_help.findViewById(R.id.title_text5);
-//        title_text6 = (TextView) dialog_help.findViewById(R.id.title_text6);
-//        content_text1 = (TextView) dialog_help.findViewById(R.id.content_text1);
-//        content_text2 = (TextView) dialog_help.findViewById(R.id.content_text2);
-//        content_text3 = (TextView) dialog_help.findViewById(R.id.content_text3);
-//        content_text4 = (TextView) dialog_help.findViewById(R.id.content_text4);
-//        content_text5 = (TextView) dialog_help.findViewById(R.id.content_text5);
-//        content_text6 = (TextView) dialog_help.findViewById(R.id.content_text6);
-//        txthelp = (TextView) dialog_help.findViewById(R.id.txthelp);
-//        scrollhelp = (NestedScrollView) dialog_help.findViewById(R.id.scrollhelp);
-//        layouthelp = (LinearLayout) dialog_help.findViewById(R.id.layouthelp);
         txtContent1 = (TextView) dialog_help.findViewById(R.id.title_text1);
         TextView txtTitle1 = (TextView) dialog_help.findViewById(R.id.content_text1);
         txtContent1.setVisibility(View.GONE);
@@ -348,10 +307,7 @@ public class EventDetails extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-//            textView.setText(s);
             openVerifyLoginCred(s);
-//            Toast.makeText(EventDetails.this, ""+s, Toast.LENGTH_SHORT).show();
-
         }
     }
     public class OkHttpHandler2 extends AsyncTask<String, Void, String> {
@@ -499,9 +455,6 @@ public class EventDetails extends AppCompatActivity {
                     if(attend.equals("1")){
                         btnAttend.setVisibility(View.INVISIBLE);
                     }
-
-
-
                 }
             }catch (Exception err){
                 Toast.makeText(this, ""+err, Toast.LENGTH_SHORT).show();
@@ -514,7 +467,6 @@ public class EventDetails extends AppCompatActivity {
     {
         RelativeLayout eventdetails = findViewById(R.id.eventdetails);
         if (!TextUtils.isEmpty(s)) {
-//            Toast.makeText(EventDetails.this, ""+s, Toast.LENGTH_SHORT).show();
             try{
                 Gson gson = new Gson();
 
@@ -575,17 +527,6 @@ public class EventDetails extends AppCompatActivity {
             String id = i.getExtras().getString("activityId");
 
             okHttpHandler.execute(url, id);
-            //check if current time is within time range
-//            if(currentTime >= startTime && currentTime <= endTime)
-
-            //open verifylogincred
-//            startActivity(new Intent(this, VerifyLoginCred.class));
-//            //add animation
-//            Animatoo.animateSlideLeft(this);
-//            finish();
-            //else
-            //if(currentTime <= startTime)
-            //This event has not yet started
         }
     }
 }

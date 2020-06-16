@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -27,8 +27,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import mobile.thomasianJourney.main.Contact;
-import mobile.thomasianJourney.main.RecyclerViewAdapterPort;
 import mobile.thomasianJourney.main.register.utils.IntentExtrasAddresses;
 import mobile.thomasianJourney.main.vieweventsfragments.R;
 import okhttp3.ConnectionSpec;
@@ -99,10 +97,6 @@ public class Year2 extends Fragment {
         super.onCreate(savedInstanceState);
         dialog = new ProgressDialog(getContext());
 
-
-//        for (int i = 0 ; i < dates.length ; i++){
-//            listContact.add(new Contact(titles[i], descriptions[i], dates[i]));
-//        }
         Intent i = getActivity().getIntent();
 
         View view = getView();
@@ -175,14 +169,8 @@ public class Year2 extends Fragment {
         @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         protected void onPostExecute(String s) {
-
-//            if(dialog.isShowing()){
-
             dialog.dismiss();
-//            }
-//            textView.setText(s);
             insertList(s);
-//            Toast.makeText(getContext(), ""+s, Toast.LENGTH_SHORT).show();
         }
     }
     public void insertList(String s){
@@ -210,17 +198,10 @@ public class Year2 extends Fragment {
                     mRecyclerViewAdapter = new RecyclerViewAdapterPort(getContext(),listContact);
                     mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     mRecyclerView.setAdapter(mRecyclerViewAdapter);
-
-
-
                 }else{
                     x = 1;
                 }
-
             }catch(Exception err){
-//                mRecyclerView.setVisibility(View.GONE);
-//                empty = getActivity().findViewById(R.id.empty);
-//                empty.setVisibility(View.VISIBLE);
                 x = 1;
             }
         }else{

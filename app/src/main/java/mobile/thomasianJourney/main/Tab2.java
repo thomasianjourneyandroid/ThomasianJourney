@@ -142,14 +142,8 @@ public class Tab2 extends Fragment {
         @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         protected void onPostExecute(String s) {
-
-//            if(dialog.isShowing()){
             dialog.dismiss();
-//            }
-//            textView.setText(s);
             insertList(s);
-//            Toast.makeText(getContext(), "Tab 2: "+s, Toast.LENGTH_SHORT).show();
-
         }
     }
 
@@ -183,10 +177,6 @@ public class Tab2 extends Fragment {
                 }
 
             }catch(Exception err){
-                //mRecyclerView.setVisibility(View.GONE);
-                //empty = getActivity().findViewById(R.id.empty);
-                //empty.setVisibility(View.VISIBLE);
-                //View.
             }
         }
 

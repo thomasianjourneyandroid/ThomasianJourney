@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -27,8 +27,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import mobile.thomasianJourney.main.Contact;
-import mobile.thomasianJourney.main.RecyclerViewAdapterPort;
 import mobile.thomasianJourney.main.register.utils.IntentExtrasAddresses;
 import mobile.thomasianJourney.main.vieweventsfragments.R;
 import okhttp3.ConnectionSpec;
@@ -171,13 +169,8 @@ public class Year4 extends Fragment {
         @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         protected void onPostExecute(String s) {
-
-//            if(dialog.isShowing()){
             dialog.dismiss();
-//            }
-//            textView.setText(s);
             insertList(s);
-//            Toast.makeText(getContext(), ""+s, Toast.LENGTH_SHORT).show();
         }
     }
     public void insertList(String s){
@@ -206,25 +199,16 @@ public class Year4 extends Fragment {
                     mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     mRecyclerView.setAdapter(mRecyclerViewAdapter);
 
-
-
                 }else{
-//                    mRecyclerView.setVisibility(View.GONE);
-//                    empty = getActivity().findViewById(R.id.empty);
-//                    empty.setVisibility(View.VISIBLE);
                     x = 1;
                 }
 
             }catch(Exception err){
-//                mRecyclerView.setVisibility(View.GONE);
-//                empty = getActivity().findViewById(R.id.empty);
-//                empty.setVisibility(View.VISIBLE);
+
                 x = 1;
             }
         }else{
-//            mRecyclerView.setVisibility(View.GONE);
-//            empty = getActivity().findViewById(R.id.empty);
-//            empty.setVisibility(View.VISIBLE);
+
             x = 1;
         }
 

@@ -14,11 +14,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -38,10 +35,6 @@ public class GPSActivity extends AppCompatActivity {
 
     public double defaultLongitude =  120.989498;
     public double defaultLatitude = 14.609882;
-    //    14.580826, 121.085796
-    //public double defaultLongitude =  121.085796;
-    //public double defaultLatitude = 14.580826;
-    //public double ScopeRadiusMeters = 336;
     public double ScopeRadiusMeters = 353;
     Intent intent;
 
@@ -61,47 +54,27 @@ public class GPSActivity extends AppCompatActivity {
 
             @Override
             public void onLocationChanged(Location location) {
-
-
-
-
-                //t.append("\n " + location.getLongitude() + " " + location.getLatitude());
-                //Log.i("GPS2","Location Found = " + location.getLongitude() + " " + location.getLatitude() );
                 double ActualDistance = CoordinateDistanceMeters(location.getLatitude(),location.getLongitude(),
                         defaultLatitude,defaultLongitude
                 );
-                //Log.i("GPS ","GPS = "+location.getLatitude()+","+location.getLongitude()+"");
-                //t.append(" " + location.getLongitude() + " " + location.getLatitude());
-                //Log.i("Distance","Actual Distance = "+ActualDistance+"");
                 boolean isAccept;
-                //edit
-                //isAccept = true;
 
                 Log.d("DistanceValue", ""+ isAcceptDistance(ScopeRadiusMeters, ActualDistance));
 
                 if(isAcceptDistance(ScopeRadiusMeters, ActualDistance) == false){
                     errorlocation();
-
                     onPause();
 
                 }
 
                 else{
-                    //Toast.makeText(GPSActivate.this,"Acceptable = "+ isAccept , Toast.LENGTH_LONG).show();
                     onPause();
                     Intent intent2 = new Intent(GPSActivity.this, VerifyLoginCred.class);
                     String actID =  intent.getExtras().getString("activityId");
                     intent2.putExtra("activityId", actID);
                     startActivity(intent2);
                     finish();
-
                 }
-
-                //Toast.makeText(GPSActivate.this,"Acceptable = "+ isAccept , Toast.LENGTH_LONG).show();
-
-
-
-                //14.606364, 121.121967
             }
 
 
@@ -169,15 +142,10 @@ public class GPSActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode){
             case 10:
-                //configure_button();
                 b.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //noinspection MissingPermission
-                        //Toast.makeText(GPSActivate.this, "Tried2", Toast.LENGTH_LONG).show();
                         gpssearch();
-                        //Toast.makeText(GPSActivate.this, "Tried3", Toast.LENGTH_LONG).show();
-
                     }
                 });
                 break;
@@ -194,8 +162,6 @@ public class GPSActivity extends AppCompatActivity {
                         Math.sin(dLon/2) * Math.sin(dLon/2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         double d = R * c;
-        //if (d>1) return Math.round(d)+"km";
-        //else if (d<=1) return Math.round(d*1000)+"m";
         return d * 1000;
     }
     public static boolean isAcceptDistance(double scope, double actual){

@@ -9,11 +9,9 @@ import android.util.Log;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 import okhttp3.ConnectionSpec;
-import okhttp3.FormBody;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -78,9 +76,6 @@ public class FirebaseInstanceIDService extends FirebaseInstanceIdService {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-//            textView.setText(s);
-//            Toast.makeText(EventDetails.this, ""+s, Toast.LENGTH_SHORT).show();
-
         }
     }
 

@@ -6,14 +6,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,8 +27,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import mobile.thomasianJourney.main.Contact;
-import mobile.thomasianJourney.main.RecyclerViewAdapter;
 import mobile.thomasianJourney.main.register.utils.IntentExtrasAddresses;
 import mobile.thomasianJourney.main.vieweventsfragments.R;
 import okhttp3.ConnectionSpec;
@@ -67,20 +64,6 @@ public class Tab1 extends Fragment {
 
             if(tabs != null && tabs[0].equals("true")){
                 rootView = inflater.inflate(R.layout.activity_year1, container, false);
-//                SharedPreferences sharedPreferences =
-//                        getActivity().getSharedPreferences(rootView.getResources().getString(R.string.shared_preferences_name), Context.MODE_PRIVATE);
-//
-//                String accountId =
-//                        sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENTS_ID, "");
-//                String collegeId =
-//                        sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENT_COLLEGE_ID, "");
-//
-//                String yearLevel =
-//                        sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENT_YEAR_LEVEL_ID, "");
-
-                //Tab1.OkHttpHandler okHttpHandler = new Tab1.OkHttpHandler();
-                //okHttpHandler.execute(url, collegeId, yearLevel, accountId);
-
 
                 rootView = inflater.inflate(R.layout.tab1, container, false);
                 list = rootView.findViewById(R.id.list1);
@@ -103,11 +86,6 @@ public class Tab1 extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        listContact = new ArrayList<>();
-//        for (int i = 0 ; i < dates.length ; i++){
-//
-//            listContact.add(new Contact(titles[i], descriptions[i], dates[i]));
-//        }
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("mobile" +
                 ".thomasianJourney.main.register.USER_CREDENTIALS", Context.MODE_PRIVATE);
 
@@ -180,15 +158,8 @@ public class Tab1 extends Fragment {
         @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         protected void onPostExecute(String s) {
-
-//            if(dialog.isShowing()){
             dialog.dismiss();
-//            }
-//            textView.setText(s);
             insertList(s);
-            //Log.d("DoubleList", "From Tab 1");
-//            Toast.makeText(getContext(), ""+s, Toast.LENGTH_SHORT).show();
-
         }
     }
     public void insertList(String s){
@@ -220,9 +191,6 @@ public class Tab1 extends Fragment {
                 }
 
             }catch(Exception err){
-//                mRecyclerView.setVisibility(View.GONE);
-//                empty = getActivity().findViewById(R.id.empty);
-//                empty.setVisibility(View.VISIBLE);
             }
         }
 

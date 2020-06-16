@@ -18,17 +18,7 @@ public class OkHttpHandler extends AsyncTask<String, Void, String> {
 
     public String registerUrl = "https://thomasianjourney.website/register/registerUser";
     OkHttpClient client;
-/*
-    public OkHttpHandler( String email,String mobileno){
 
-        //this.client = c;
-        this.client = new OkHttpClient.Builder()
-                .connectionSpecs(Arrays.asList(ConnectionSpec.MODERN_TLS, ConnectionSpec.COMPATIBLE_TLS))
-                .build();
-        this.doInBackground(email, mobileno,registerUrl);
-
-    }
-*/
     @Override
     protected String doInBackground(String... params) {
         return doInBackgroundTask(params[1], params[2], params[0]);
@@ -37,7 +27,6 @@ public class OkHttpHandler extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        //verifyCredentials(s);
     }
 
     public String doInBackgroundTask(String emailAddress, String mobileNumber, String url) {
@@ -64,13 +53,6 @@ public class OkHttpHandler extends AsyncTask<String, Void, String> {
         } catch (Exception e) {
             e.printStackTrace();
             Log.i("data:", emailAddress + "  and  "+mobileNumber);
-//            if (counter < 5) {
-//                System.out.println("Counter is: " + counter);
-//                counter++;
-//                doInBackgroundTask(registerFirst_emailAddress, registerFirst_mobileNumber, url);
-//            } else {
-//                // five failed attempts
-//            }
         }
 
         return "";
@@ -86,11 +68,6 @@ public class OkHttpHandler extends AsyncTask<String, Void, String> {
                 jsonObject = gson.fromJson(s, JsonObject.class);
             } catch (JsonSyntaxException e) {
                 e.printStackTrace();
-
-                /*Toast.makeText(this, "Email not found", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(RegisterFirstLoading.this, RegisterFirst.class);
-                startActivity(intent);
-                finish();*/
             }
 
             String email;
@@ -104,18 +81,9 @@ public class OkHttpHandler extends AsyncTask<String, Void, String> {
                 email = dataObject.get("studEmail").getAsString();
                 mobileNumber = dataObject.get("studMobileNumber").getAsString();
                 studentsId = dataObject.get("studentsId").getAsInt();
-/*
-                Intent intent = new Intent(RegisterFirstLoading.this, RegisterSecond.class);
-                intent.putExtra("email", email);
-                intent.putExtra("mobile", registerFirst_mobileNumber);
-                intent.putExtra("studentsId", studentsId);
-                startActivity(intent);
-                finish();*/
+
             } else {
-                /*Toast.makeText(this, "Invalid email address", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(RegisterFirstLoading.this, RegisterFirst.class);
-                startActivity(intent);
-                finish();*/
+
             }
         }
     }

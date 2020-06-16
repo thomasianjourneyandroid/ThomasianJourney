@@ -1,9 +1,9 @@
 package mobile.thomasianJourney.main;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -14,13 +14,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -72,8 +69,6 @@ public class VerLoginCredSuc extends AppCompatActivity {
         String email1 =
                 sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_EMAIL_ADDRESS, "");
 
-//        email.setText(email1);
-
         contscanbtn = findViewById(R.id.contscanbtn);
         final Activity activity = this;
 
@@ -106,15 +101,12 @@ public class VerLoginCredSuc extends AppCompatActivity {
             }
             else {
 
-//                Toast.makeText(this, "Something was scanned", Toast.LENGTH_LONG).show();
                 String contents = data.getStringExtra("SCAN_RESULT");
                 String format = data.getStringExtra("SCAN_RESULT_FORMAT");
                 Intent intent = getIntent();
                 String id = intent.getExtras().getString("activityId");
 
                 String[]  info = contents.split(";");
-
-//                && info[1].equals("sana") && info[2].equals("hehe")
 
                 SharedPreferences sharedPreferences =
                         getSharedPreferences(getString(R.string.shared_preferences_name),
@@ -125,7 +117,6 @@ public class VerLoginCredSuc extends AppCompatActivity {
                         String accountId =
                                 sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENTS_ID, "");
                         String yearLevel = sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENT_YEAR_LEVEL_ID, "");
-                        //String yearLevel = "2";
                         OkHttpHandler okHttpHandler = new OkHttpHandler();
                         okHttpHandler.execute(url, accountId ,id, yearLevel);
 
@@ -189,9 +180,6 @@ public class VerLoginCredSuc extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-//            textView.setText(s);
-//            Toast.makeText(EventDetails.this, ""+s, Toast.LENGTH_SHORT).show();
-
         }
     }
 
@@ -242,16 +230,4 @@ public class VerLoginCredSuc extends AppCompatActivity {
         LottieCheck.playAnimation();
 
     }
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//
-//        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-//            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-//                == PackageManager.PERMISSION_GRANTED){
-//
-//            }
-//        }
-//    }
-
 }

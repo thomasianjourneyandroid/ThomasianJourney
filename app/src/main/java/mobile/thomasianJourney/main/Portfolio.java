@@ -4,37 +4,28 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
 import mobile.thomasianJourney.main.vieweventsfragments.R;
 
@@ -103,72 +94,16 @@ public class Portfolio extends AppCompatActivity {
         mViewPager.setOffscreenPageLimit(3);
 
 // to set icon for tabs
-//        tablayout.getTabAt(0).setIcon(R.drawable.ic_call);
-//        tablayout.getTabAt(1).setIcon(R.drawable.ic_group);
-//        tablayout.getTabAt(2).setIcon(R.drawable.ic_star);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setElevation(0);
 
-
-
-//        list.setAdapter(adapter);
-
-
-        //handle item clicks
-//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-//                if (position==0){
-//                    Toast.makeText(MainActivity.this, "Item One Clicked...", Toast.LENGTH_SHORT).show();
-//                }
-//                if (position==1){
-//                    Toast.makeText(MainActivity.this, "Item Two Clicked...", Toast.LENGTH_SHORT).show();
-//                }
-//                if (position==2){
-//                    Toast.makeText(MainActivity.this, "Item Three Clicked...", Toast.LENGTH_SHORT).show();
-//                }
-//                if (position==3){
-//                    Toast.makeText(MainActivity.this, "Item Four Clicked...", Toast.LENGTH_SHORT).show();
-//                }
-//                if (position==4){
-//                    Toast.makeText(MainActivity.this, "Item Five Clicked...", Toast.LENGTH_SHORT).show();
-//                }
-//                if (position==5){
-//                    Toast.makeText(MainActivity.this, "Item Six Clicked...", Toast.LENGTH_SHORT).show();
-//                }
-//                if (position==6){
-//                    Toast.makeText(MainActivity.this, "Item Seven Clicked...", Toast.LENGTH_SHORT).show();
-//                }
-//                if (position==7){
-//                    Toast.makeText(MainActivity.this, "Item Eight Clicked...", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-
-
-
-
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-//        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
-//        mViewPager.setAdapter(mSectionsPagerAdapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
     }
 
     // list view adapter
@@ -192,11 +127,7 @@ public class Portfolio extends AppCompatActivity {
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
             LayoutInflater layoutInflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row = layoutInflater.inflate(R.layout.row, parent, false);
-            //Button myDate = row.findViewById(R.id.button1);
-//            TextView myTitle = row.findViewById(R.id.text1);
             TextView myDescription = row.findViewById(R.id.text2);
-            //myDate.setText(dates[position]);
-//            myTitle.setText(titles[position]);
             myDescription.setText(descriptions[position]);
             return row;
         }
@@ -283,21 +214,6 @@ public class Portfolio extends AppCompatActivity {
     public void ShowDialogHelp() {
         dialog_help.setContentView(R.layout.dialog_help);
         closeDialogHelp = (ImageView) dialog_help.findViewById(R.id.closeDialogHelp);
-//        title_text1 = (TextView) dialog_help.findViewById(R.id.title_text1);
-//        title_text2 = (TextView) dialog_help.findViewById(R.id.title_text2);
-//        title_text3 = (TextView) dialog_help.findViewById(R.id.title_text3);
-//        title_text4 = (TextView) dialog_help.findViewById(R.id.title_text4);
-//        title_text5 = (TextView) dialog_help.findViewById(R.id.title_text5);
-//        title_text6 = (TextView) dialog_help.findViewById(R.id.title_text6);
-//        content_text1 = (TextView) dialog_help.findViewById(R.id.content_text1);
-//        content_text2 = (TextView) dialog_help.findViewById(R.id.content_text2);
-//        content_text3 = (TextView) dialog_help.findViewById(R.id.content_text3);
-//        content_text4 = (TextView) dialog_help.findViewById(R.id.content_text4);
-//        content_text5 = (TextView) dialog_help.findViewById(R.id.content_text5);
-//        content_text6 = (TextView) dialog_help.findViewById(R.id.content_text6);
-//        txthelp = (TextView) dialog_help.findViewById(R.id.txthelp);
-//        scrollhelp = (NestedScrollView) dialog_help.findViewById(R.id.scrollhelp);
-//        layouthelp = (LinearLayout) dialog_help.findViewById(R.id.layouthelp);
         txtContent1 = (TextView) dialog_help.findViewById(R.id.title_text1);
         TextView txtTitle1 = (TextView) dialog_help.findViewById(R.id.content_text1);
         txtContent1.setVisibility(View.GONE);

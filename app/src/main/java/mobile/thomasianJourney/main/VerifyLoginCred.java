@@ -61,15 +61,12 @@ public class VerifyLoginCred extends AppCompatActivity {
                 sharedPreferences.getString(IntentExtrasAddresses.INTENT_EXTRA_STUDENTS_ID,
                 "");
 
-
         AsyncResponse asyncResponse = new AsyncResponse() {
             @Override
             public void doWhenFinished(String output) {
                 verifyCredentials(output);
             }
         };
-
-        //RegisterFirstAsync registerFirstAsync = new RegisterFirstAsync(asyncResponse);
 
         StudentDetails studentDetails = new StudentDetails(asyncResponse);
         Log.i("asdajs","details =  "+getString(R.string.studentDetails)+" : "+ studentId);
@@ -105,30 +102,6 @@ public class VerifyLoginCred extends AppCompatActivity {
                             Log.i("wordking","Gumagana !");
                             startActivity(i2);
                              finish();
-
-
-//                            Thread timer = new Thread() {
-//                                public void run () {
-//                                    try {
-//                                        sleep(5000) ;
-//                                    } catch (InterruptedException e) {
-//                                        e.printStackTrace();
-//                                    }
-//                                    finally {
-//                                        startActivity(i);
-//                                        finish();
-//                                    }
-//                                }
-//                            };
-//                            timer.start();
-
-
-/*
-                            Intent intent = new Intent(RegisterFirstLoading.this, RegisterSecond.class);
-                            intent.putExtra(IntentExtrasAddresses.INTENT_EXTRA_EMAIL_ADDRESS, emailAddress);
-                            intent.putExtra(IntentExtrasAddresses.INTENT_EXTRA_MOBILE_NUMBER, mobileNumber);
-                            intent.putExtra(IntentExtrasAddresses.INTENT_EXTRA_STUDENTS_ID, studentsId);
-*/
                         } else {
                             Toast.makeText(this, "null json",
                                     Toast.LENGTH_SHORT).show();
@@ -151,10 +124,6 @@ public class VerifyLoginCred extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Cannot find Student Details",
                     Toast.LENGTH_SHORT).show();
-            //Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
-            //startActivity(intent);
-            //finish();
-
         }
     }
 

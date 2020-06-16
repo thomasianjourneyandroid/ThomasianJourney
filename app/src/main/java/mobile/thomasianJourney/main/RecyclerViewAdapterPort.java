@@ -66,7 +66,6 @@ public class RecyclerViewAdapterPort extends RecyclerView.Adapter<RecyclerViewAd
             tv_name = itemView.findViewById(R.id.tv_event_title);
             tv_desc = itemView.findViewById(R.id.tv_event_desc);
             tv_date = itemView.findViewById(R.id.tv_event_date);
-//            img = itemView.findViewById(R.id.img_contact);
 
         }
     }

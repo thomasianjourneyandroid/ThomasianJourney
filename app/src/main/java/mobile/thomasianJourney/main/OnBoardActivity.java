@@ -3,20 +3,16 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.airbnb.lottie.LottieAnimationView;
 
 import mobile.thomasianJourney.main.home.HomeActivity;
 import mobile.thomasianJourney.main.register.RegisterFirst;
@@ -28,7 +24,6 @@ public class OnBoardActivity extends AppCompatActivity {
     private ViewPager mSlideViewPager;
     private LinearLayout mDotLayout;
     Button obconbutton;
-//    private LottieAnimationView LottieECalendar;
 
     private TextView[] mDots;
 
@@ -39,17 +34,6 @@ public class OnBoardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_board);
-
-////        alertDialog=new AlertDialog.Builder(MainActivity.this).create();
-////        alertDialog.setTitle("Hello");
-////        alertDialog.setMessage("This is an alert dialog");
-////        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Show", new DialogInterface.OnClickListener() {
-////            @Override
-////            public void onClick(DialogInterface dialog, int which) {
-////                Toast.makeText(MainActivity.this, "Show Button Pressed",Toast.LENGTH_LONG).show();
-////                dialog.dismiss();
-////            }
-//        });
 
         obconbutton = findViewById(R.id.obcontbutton);
         mSlideViewPager = (ViewPager) findViewById(R.id.slideViewPager);
@@ -70,7 +54,6 @@ public class OnBoardActivity extends AppCompatActivity {
 
     public void contAnim(View v)
     {
-//        alertDialog.show();
         onfirst();
     }
     public void onfirst()
@@ -84,7 +67,6 @@ public class OnBoardActivity extends AppCompatActivity {
 
             new AlertDialog.Builder(OnBoardActivity.this)
                     .setTitle("        P r i v a c y       P o l i c y")
-//                    .setMessage(R.string.privacy)
                     .setView(view)
                     .setNegativeButton("Decline", new DialogInterface.OnClickListener() {
                         @Override
@@ -156,17 +138,7 @@ public class OnBoardActivity extends AppCompatActivity {
 
         }
 
-
-
-
-
-
     }
-
-//    private void loadLastScreen(){
-//        obconbutton.setVisibility(View.VISIBLE);
-//
-//    }
 
     ViewPager.OnPageChangeListener viewListener = new ViewPager.OnPageChangeListener() {
         @Override

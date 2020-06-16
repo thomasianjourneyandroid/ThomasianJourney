@@ -107,7 +107,6 @@ public class AttendedEvent extends AppCompatActivity {
 
         Intent i = getIntent();
         String id = i.getExtras().getString("activityId");
-        //String accountId = "1";
         okHttpHandler2.execute(eventUrl, id, studentId + "");
 
         dialog_help = new Dialog(this);
@@ -119,7 +118,6 @@ public class AttendedEvent extends AppCompatActivity {
             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
                 String permissions = (Manifest.permission.WRITE_EXTERNAL_STORAGE);
                 requestPermissions(new String[]{permissions}, 1);
-//                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
 
                 if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
 
@@ -349,13 +347,7 @@ public class AttendedEvent extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-//            textView.setText(s);
-//            openVerifyLoginCred(s);
-            // INSERT IF STICKER ALREADY CLICKED ACTION
-//            Log.d("ScanSuccess", "On Post Execute: " + s);
             printSticker(s);
-//            Toast.makeText(EventDetails.this, ""+s, Toast.LENGTH_SHORT).show();
-
         }
     }
 
@@ -535,8 +527,6 @@ public class AttendedEvent extends AppCompatActivity {
 
                 JsonObject dataObject = jsonObject.get("data").getAsJsonObject();
 
-//                Log.d("ScanSuccess", "Data Check: " + dataObject);
-
                 String attendID = dataObject.get("attendId").getAsString();
                 String studattendId = dataObject.get("studattendId").getAsString();
                 String eventId = dataObject.get("eventId").getAsString();
@@ -576,7 +566,6 @@ public class AttendedEvent extends AppCompatActivity {
                         try {
                             img = Image.getInstance(byteArray);
                             img.scaleAbsolute(113f, 151f);
-//                img.scalePercent(7f);
                             img.setAlignment(Image.MIDDLE);
                         } catch (BadElementException e) {
                             e.printStackTrace();

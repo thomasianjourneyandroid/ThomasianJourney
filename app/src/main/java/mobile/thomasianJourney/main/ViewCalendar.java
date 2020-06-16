@@ -11,11 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.CalendarView;
-import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -26,10 +22,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 
 import mobile.thomasianJourney.main.register.utils.IntentExtrasAddresses;
 import mobile.thomasianJourney.main.vieweventsfragments.R;
@@ -98,13 +91,9 @@ public class ViewCalendar extends AppCompatActivity {
                 for (int i = 0; i < dataArray.size(); i++) {
                     String[] rowArray = new String[6];
                     JsonArray stringArray = dataArray.get(i).getAsJsonArray();
-//                    Log.d("ViewCalendar", "Check String Array" + stringArray);
 
                     Arrays.fill(rowArray, null);
                     for (int j = 0; j < stringArray.size(); j++) {
-//                        String data = stringArray.get(j).toString();
-
-//                        Log.d("ViewCalendar", "Data Check: " + data);
 
                         String eventid = stringArray.get(0).toString();
                         String eventname = stringArray.get(1).toString();
@@ -113,22 +102,13 @@ public class ViewCalendar extends AppCompatActivity {
                         String eventend = stringArray.get(4).toString();
                         String eventstatus = stringArray.get(5).toString();
 
-//                        Log.d("ViewCalendar", "Checking Event Start." + eventstart);
-
                         if (eventstart.contains(date)) {
-//                            Log.d("ViewCalendar", "Place success stuff here." + eventstart);
                             rowArray[0] = eventid;
                             rowArray[1] = eventname;
                             rowArray[2] = eventvenue;
                             rowArray[3] = eventstart;
                             rowArray[4] = eventend;
                             rowArray[5] = eventstatus;
-
-//                            Log.d("ViewCalendar", "rowArray Check " + rowArray);
-
-//                            for (int k = 0; k < rowArray.length; k++) {
-//                                Log.d("ViewCalendar", "rowArray Check " + rowArray[k]);
-//                            }
 
                             list.add(rowArray);
                             break;
@@ -138,11 +118,7 @@ public class ViewCalendar extends AppCompatActivity {
 
                 }
 
-//                Log.d("ViewCalendar", "List Item Check" + Arrays.deepToString(list.toArray()));
-
                 String[][] eventsarray = list.toArray(new String[list.size()][6]);
-
-//                Log.d("ViewCalendar", "String Array Check" + eventsarray.length);
 
                 try {
                     insertEvents(eventsarray);
@@ -154,16 +130,6 @@ public class ViewCalendar extends AppCompatActivity {
 
             }
         });
-
-//        calendardata.add(new ItemData("Test Event for IICS TJ Version 3.0", "Medicine Auditorium", "10:26 - 11:26"));
-//        calendardata.add(new ItemData("Test Event for all TJ Version 3.0", "Medicine Auditorium", "10:28 - 10:28"));
-//        calendardata.add(new ItemData("2nd Test Event for IICS TJ Version 3.0", "Medicine Auditorium", "08:59 - 08:59"));
-//
-//        RecyclerView mRecyclerView = findViewById(R.id.listview);
-//        RecyclerViewAdapterCalendar adapter = new RecyclerViewAdapterCalendar(this, calendardata);
-//
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        mRecyclerView.setAdapter(adapter);
     }
 
     public class OkHttpHandler extends AsyncTask<String, Void, String> {
@@ -212,7 +178,6 @@ public class ViewCalendar extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             dialog.dismiss();
-//            Log.d("ViewCalendar", "Check" + s);
             viewEvents(s);
         }
     }
@@ -236,13 +201,9 @@ public class ViewCalendar extends AppCompatActivity {
                     for (int i = 0; i < dataArray.size(); i++) {
                         String[] rowArray = new String[6];
                         JsonArray stringArray = dataArray.get(i).getAsJsonArray();
-//                    Log.d("ViewCalendar", "Check String Array" + stringArray);
 
                         Arrays.fill(rowArray, null);
                         for (int j = 0; j < stringArray.size(); j++) {
-//                        String data = stringArray.get(j).toString();
-
-//                        Log.d("ViewCalendar", "Data Check: " + data);
 
                             String eventid = stringArray.get(0).toString();
                             String eventname = stringArray.get(1).toString();
@@ -251,22 +212,14 @@ public class ViewCalendar extends AppCompatActivity {
                             String eventend = stringArray.get(4).toString();
                             String eventstatus = stringArray.get(5).toString();
 
-//                        Log.d("ViewCalendar", "Checking Event Start." + eventstart);
 
                             if (eventstart.contains(formatter.format(date))) {
-//                            Log.d("ViewCalendar", "Place success stuff here." + eventstart);
                                 rowArray[0] = eventid;
                                 rowArray[1] = eventname;
                                 rowArray[2] = eventvenue;
                                 rowArray[3] = eventstart;
                                 rowArray[4] = eventend;
                                 rowArray[5] = eventstatus;
-
-//                            Log.d("ViewCalendar", "rowArray Check " + rowArray);
-
-//                            for (int k = 0; k < rowArray.length; k++) {
-//                                Log.d("ViewCalendar", "rowArray Check " + rowArray[k]);
-//                            }
 
                                 list.add(rowArray);
                                 break;
@@ -276,11 +229,7 @@ public class ViewCalendar extends AppCompatActivity {
 
                     }
 
-//                Log.d("ViewCalendar", "List Item Check" + Arrays.deepToString(list.toArray()));
-
                     String[][] eventsarray = list.toArray(new String[list.size()][6]);
-
-//                Log.d("ViewCalendar", "String Array Check" + eventsarray.length);
 
                     try {
                         insertEvents(eventsarray);
@@ -292,10 +241,7 @@ public class ViewCalendar extends AppCompatActivity {
                 }
 
             } catch (Exception err) {
-//                mRecyclerView.setVisibility(View.GONE);
-//                empty = getActivity().findViewById(R.id.empty);
-//                empty.setVisibility(View.VISIBLE);
-//                Toast.makeText(this, year1.length+"HELLO", Toast.LENGTH_SHORT).show();
+
             }
         } else {
         }

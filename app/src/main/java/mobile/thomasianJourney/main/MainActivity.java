@@ -4,27 +4,24 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -81,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
         adapter.AddFragment(new Tab1(), "EVENTS");
         adapter.AddFragment(new Tab2(), "UPCOMING");
         adapter.AddFragment(new Tab3(), "ATTENDED");
-//        MyAdapter adapter = new MyAdapter(this, dates, titles, descriptions);
         mViewPager.setAdapter(adapter);
         mTablayout.setupWithViewPager(mViewPager);
 
@@ -92,58 +88,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 // to set icon for tabs
-//        tablayout.getTabAt(0).setIcon(R.drawable.ic_call);
-//        tablayout.getTabAt(1).setIcon(R.drawable.ic_group);
-//        tablayout.getTabAt(2).setIcon(R.drawable.ic_star);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setElevation(0);
 
-
-
-//        list.setAdapter(adapter);
-
-
-        //handle item clicks
-//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-//                if (position==0){
-//                    Toast.makeText(MainActivity.this, "Item One Clicked...", Toast.LENGTH_SHORT).show();
-//                }
-//                if (position==1){
-//                    Toast.makeText(MainActivity.this, "Item Two Clicked...", Toast.LENGTH_SHORT).show();
-//                }
-//                if (position==2){
-//                    Toast.makeText(MainActivity.this, "Item Three Clicked...", Toast.LENGTH_SHORT).show();
-//                }
-//                if (position==3){
-//                    Toast.makeText(MainActivity.this, "Item Four Clicked...", Toast.LENGTH_SHORT).show();
-//                }
-//                if (position==4){
-//                    Toast.makeText(MainActivity.this, "Item Five Clicked...", Toast.LENGTH_SHORT).show();
-//                }
-//                if (position==5){
-//                    Toast.makeText(MainActivity.this, "Item Six Clicked...", Toast.LENGTH_SHORT).show();
-//                }
-//                if (position==6){
-//                    Toast.makeText(MainActivity.this, "Item Seven Clicked...", Toast.LENGTH_SHORT).show();
-//                }
-//                if (position==7){
-//                    Toast.makeText(MainActivity.this, "Item Eight Clicked...", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-
-
-
-
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-//        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
-//        mViewPager.setAdapter(mSectionsPagerAdapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
@@ -173,11 +122,7 @@ public class MainActivity extends AppCompatActivity {
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
             LayoutInflater layoutInflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row = layoutInflater.inflate(R.layout.row, parent, false);
-            //Button myDate = row.findViewById(R.id.button1);
-//            TextView myTitle = row.findViewById(R.id.text1);
             TextView myDescription = row.findViewById(R.id.text2);
-            //myDate.setText(dates[position]);
-//            myTitle.setText(titles[position]);
             myDescription.setText(descriptions[position]);
             return row;
 
@@ -224,9 +169,6 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             //Returning the current tabs
             switch (position) {
-//                case 0:
-//                    Tab1 tab1 = new Tab1();
-//                    return tab1;
                 case 1:
                     Tab2 tab2 = new Tab2();
                     return tab2;

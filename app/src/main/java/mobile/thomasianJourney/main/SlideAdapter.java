@@ -3,7 +3,6 @@ package mobile.thomasianJourney.main;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,14 +79,10 @@ public class SlideAdapter extends PagerAdapter {
         layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.slide_layout, container, false);
 
-
-//        LottieAnimationView slidelottieAnimationView = (LottieAnimationView) view.findViewById(R.id.lottieECalendar);
-//        slidelottieAnimationView.setScale(3f);
         ImageView slideimgView = (ImageView) view.findViewById(R.id.onboardingimg);
         TextView slidetextView1 = (TextView) view.findViewById(R.id.onboardingtitle1);
         TextView slidetextView2 = (TextView) view.findViewById(R.id.onboardingdesc1);
         Button obconbutton = view.findViewById(R.id.obcontbutton);
-//        slidelottieAnimationView.setAnimation(slide_images[position]);
         slideimgView.setImageResource(slide_images[position]);
         slidetextView1.setText(slide_headings[position]);
         slidetextView2.setText(slide_descs[position]);

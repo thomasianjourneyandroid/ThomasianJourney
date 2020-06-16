@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -27,8 +27,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import mobile.thomasianJourney.main.Contact;
-import mobile.thomasianJourney.main.RecyclerViewAdapterPort;
 import mobile.thomasianJourney.main.register.utils.IntentExtrasAddresses;
 import mobile.thomasianJourney.main.vieweventsfragments.R;
 import okhttp3.ConnectionSpec;
@@ -40,7 +38,6 @@ import okhttp3.Response;
 
 public class Year1 extends Fragment {
     private RecyclerView mRecyclerView;
-    //    private List<> mList;
     RecyclerView list;
     private RecyclerViewAdapterPort mRecyclerViewAdapter;
 
@@ -61,8 +58,7 @@ public class Year1 extends Fragment {
         if (i != null) {
             String yearLevel = i.getStringExtra("yearLevel");
             String[] tabs = i.getStringArrayExtra("emptytab"+yearLevel);
-//        Log.i("ok","tabs = "+tabs.toString());
-//        Toast.makeText(getContext(), "Empty Tab:"+tabs[0], Toast.LENGTH_SHORT).show();
+
             View rootView;
             if(tabs != null && tabs[0].equals("false")){
                 rootView = inflater.inflate(R.layout.activity_year1, container, false);
@@ -171,13 +167,8 @@ public class Year1 extends Fragment {
         @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         protected void onPostExecute(String s) {
-
-//            if(dialog.isShowing()){
             dialog.dismiss();
-//            }
-//            textView.setText(s);
             insertList(s);
-//            Toast.makeText(getContext(), ""+s, Toast.LENGTH_SHORT).show();
         }
     }
     public void insertList(String s){
@@ -211,22 +202,13 @@ public class Year1 extends Fragment {
 
 
                 }else{
-//                    LinearLayout listlayout = getActivity().findViewById(R.id.list2);
-//                    empty = getActivity().findViewById(R.id.empty);
-//                    View child = getLayoutInflater().inflate(R.layout.activity_emptytab, null);
-//                    listlayout.addView(child);child
                     x = 1;
                 }
 
             }catch(Exception err){
-//                Toast.makeText(getContext(), "No events found", Toast.LENGTH_LONG).show();
 
             }
         }else{
-//            LinearLayout listlayout = getActivity().findViewById(R.id.listlayout);
-//            empty = getActivity().findViewById(R.id.empty);
-//            View child = getLayoutInflater().inflate(R.layout.activity_emptytab, null);
-//            listlayout.addView(child);
             x = 1;
         }
 

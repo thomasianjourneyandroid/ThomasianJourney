@@ -165,17 +165,12 @@ public class RegisterSecond extends AppCompatActivity {
 		mDialogResend.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         emailRequestEnd = System.nanoTime();
-        //Log.d("Time Check", "Email Request End: " + emailRequestEnd);
 
         emailRequestDuration = (emailRequestEnd - emailRequestStart)/1000000000;
-        //Log.d("Time Check", "Email Request Duration: " + emailRequestDuration);
 
 		try {
             if (isReadyToResend == true || emailRequestDuration >= 300) {
                 isReadyToResend = false;
-
-                //emailRequestStart = System.nanoTime();
-                //Log.d("RegisterSecond", "System.nanoTime Example here: " + emailRequestStart);
 
                 mDialogResend.show();
 			} else {
